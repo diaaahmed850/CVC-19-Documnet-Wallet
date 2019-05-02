@@ -109,7 +109,7 @@ def idscanner(img):
     flannParam=dict(algorithm=FLANN_INDEX_KDITREE,tree=5)
     flann=cv2.FlannBasedMatcher(flannParam,{})
 
-    trainImg=cv2.imread("ref.jpg",0)
+    trainImg=cv2.imread("Ref_id/ref.jpg",0)
     trainKP,trainDesc=detector.detectAndCompute(trainImg,None)
     QueryImgBGR=img
 #QueryImgBGR = cv2.copyMakeBorder(QueryImgBGR,pad,pad,pad,pad,cv2.BORDER_CONSTANT,value=(0,0,255))
