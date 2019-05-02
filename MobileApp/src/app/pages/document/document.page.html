@@ -1,0 +1,41 @@
+<ion-header *ngIf="document">
+    <ion-toolbar>
+        <ion-title>{{document.title}}</ion-title>
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+<ion-content padding *ngIf="document">
+    <ion-list>
+        <ion-list-header>
+            <ion-label>Results</ion-label>
+          </ion-list-header>
+        </ion-list>
+          <form #dataform="ngForm" (ngSubmit)="saveData(dataform)" >
+          <ion-item *ngFor="let k of keys">
+              <ion-label>{{k}}</ion-label>
+              <ion-input type='text' [(ngModel)]="document.data[k]" [readonly]="readOnly" required name="{{k}}"></ion-input>
+            </ion-item>
+            <ion-grid>
+              <ion-row *ngIf="readOnly">
+               
+                <ion-col col-4>
+                    <ion-button (click)="edit()"  color="primary" >edit</ion-button>
+                </ion-col>
+                <ion-col col-4> </ion-col>
+                <ion-col col-4>
+                    <ion-button (click)="delete()" color="danger"  >delete</ion-button>  
+                </ion-col>
+              </ion-row>
+              <ion-row center *ngIf="!readOnly">  
+                <ion-col text-center>   
+                  <br>  
+                 <ion-button type="submit" block [disabled]="!dataform.form.valid" > Save</ion-button> 
+                </ion-col> 
+               </ion-row>
+                </ion-grid>
+          </form>
+         
+
+</ion-content>
