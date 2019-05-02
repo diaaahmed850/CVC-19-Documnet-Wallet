@@ -23,4 +23,5 @@ urlpatterns = [
     path('doc', views.documentView.as_view()),
     path('doc/<int:pk>', views.documentDetailView.as_view()),
     path('signup', views.EmailSignUpView.as_view()),
+    path('signin', views.EmailSignInView.as_view()),
 ]
