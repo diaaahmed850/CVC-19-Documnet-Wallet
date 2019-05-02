@@ -25,4 +25,5 @@ urlpatterns = [
     path('signup', views.EmailSignUpView.as_view()),
     path('signin', views.EmailSignInView.as_view()),
     path('socialLogin', views.SocialLogin.as_view()),
+    path('id', views.IDView.as_view()),
 ]
