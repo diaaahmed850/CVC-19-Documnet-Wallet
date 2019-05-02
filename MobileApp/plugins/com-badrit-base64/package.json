@@ -1,0 +1,77 @@
+{
+  "_args": [
+    [
+      "com-badrit-base64",
+      "/home/diaa/Desktop/vision19_project/vision19_App"
+    ]
+  ],
+  "_from": "com-badrit-base64@latest",
+  "_id": "com-badrit-base64@0.2.0",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/com-badrit-base64",
+  "_nodeVersion": "0.12.2",
+  "_npmUser": {
+    "email": "hazem.hagrass@gmail.com",
+    "name": "hazem.hagrass"
+  },
+  "_npmVersion": "2.7.4",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "com-badrit-base64",
+    "raw": "com-badrit-base64",
+    "rawSpec": "",
+    "scope": null,
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/com-badrit-base64/-/com-badrit-base64-0.2.0.tgz",
+  "_shasum": "bbd86033aa1e1acff7ee446a6c80c8bd42f4dd37",
+  "_shrinkwrap": null,
+  "_spec": "com-badrit-base64",
+  "_where": "/home/diaa/Desktop/vision19_project/vision19_App",
+  "bugs": {
+    "url": "https://github.com/hazemhagrass/phonegap-base64/issues"
+  },
+  "cordova": {
+    "id": "com-badrit-base64",
+    "platforms": [
+      "android"
+    ]
+  },
+  "dependencies": {},
+  "description": "Cordova Base64 Plugin",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "bbd86033aa1e1acff7ee446a6c80c8bd42f4dd37",
+    "tarball": "https://registry.npmjs.org/com-badrit-base64/-/com-badrit-base64-0.2.0.tgz"
+  },
+  "gitHead": "1e215008622f484ab32268de9963903ab2d24f87",
+  "homepage": "https://github.com/hazemhagrass/phonegap-base64",
+  "keywords": [
+    "base64",
+    "cordova",
+    "cordova-android",
+    "ecosystem:cordova"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    {
+      "name": "hazem.hagrass",
+      "email": "hazem.hagrass@gmail.com"
+    }
+  ],
+  "name": "com-badrit-base64",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hazemhagrass/phonegap-base64.git"
+  },
+  "scripts": {},
+  "version": "0.2.0"
+}
