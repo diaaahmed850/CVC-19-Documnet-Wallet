@@ -270,3 +270,54 @@ class EmailSignInView(APIView):
         else:       
             #Invalid data inserted
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+class SocialLogin(APIView):
+    
+    def post(self, request):
+        social_serializer = SocialSerializer(data=request.data)
+        social_serializer_email = SocialUsersSerializer(data=request.data)
+        if social_serializer_email.is_valid() and social_serializer.is_valid():
+            try:
+                social_serializer_email.validated_data["email"]
+            except KeyError:
+                return Response({"error": "Some data is missing"}, status=status.HTTP_400_BAD_REQUEST)
+            try:
+                #1)checking whether the account already exists as a SOCIAL USER or not ?
+                SocialUsers.objects.get(socialID=social_serializer.validated_data["socialID"])
+            except SocialUsers.DoesNotExist:
+                #1.1)No it doesn't exist as a socialUser , then check the normal user table 
+                try:
+                    User.objects.get(email=social_serializer_email.validated_data["email"])
+                except User.DoesNotExist:
+                    try:
+                        #1.1.1) not Found in any of the 2 tables (SocialUsers and User), then add this Social Account
+                        user = User.objects.create_user(username=social_serializer_email.validated_data["email"],email=social_serializer_email.validated_data["email"])
+                        social_serializer.save(user=user)
+                    except Exception as e:
+                        return Response({"error": "Please try again later","content":str(e)}, status=status.HTTP_503_SERVICE_UNAVAILABLE)
+                    jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
+                    jwt_encode_handler = api_settings.JWT_ENCODE_HANDLER
+                    payload = jwt_payload_handler(user)
+                    token = jwt_encode_handler(payload)
+                    return Response({"token": token}, status=status.HTTP_201_CREATED)
+                else:
+                    #1.1.2) exists as a normal user account, so won't be created again
+                    return Response({"error": "The Account Already Exists, you should login using your Email"},status=status.HTTP_401_UNAUTHORIZED)
+            else:
+                #1.2)YES that account already exist so, won't created again.
+                socialUser=SocialUsers.objects.get(socialID=social_serializer.validated_data["socialID"])
+                jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
+                jwt_encode_handler = api_settings.JWT_ENCODE_HANDLER
+                payload = jwt_payload_handler(socialUser.user)
+                token = jwt_encode_handler(payload)
+                return Response({"token": token}, status=status.HTTP_201_CREATED)
+
+        else:
+            #collect errors in data submitted to be sent to client side.
+            social_serializer_email.is_valid()
+            social_serializer.is_valid()
+            errors = social_serializer.errors
+            errors.update(social_serializer_email.errors)
+            return Response(errors, status=status.HTTP_400_BAD_REQUEST)
+
+# Class that contain the apis for signning in using Facebook/Google Account
+# HTTP methods to interact : POST request in which the user sign in using Facebook/Google account
