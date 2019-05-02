@@ -28,7 +28,8 @@ import imutils
 import io
 import os
 import re
-
+num1=0
+num2=0
 def order_points(pts):
     	# initialzie a list of coordinates that will be ordered
 	# such that the first entry in the list is the top-left,
@@ -100,6 +101,9 @@ def stringToRGB(base64_string,type):
         image.save('test_data_ID/test'+str(num1)+'.jpg')
     elif type =='p':
         image.save('test_data_passport/test'+str(num2)+'.jpg')
+    
+    num1=num1+1
+    return cv2.cvtColor(np.array(image), cv2.COLOR_BGR2RGB)
 
 def idscanner(img):
     MIN_MATCH_COUNT=2
