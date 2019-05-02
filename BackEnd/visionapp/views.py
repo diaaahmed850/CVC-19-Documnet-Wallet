@@ -185,4 +185,47 @@ class documentDetailView(APIView):
                 else:
                     document.delete()
                     return Response(status=status.HTTP_204_NO_CONTENT)
+class EmailSignUpView(APIView):
+    
+    def post(self, request):
+        serializer = UsersSerializer(data=request.data)
+        if serializer.is_valid():
+            try:
+                serializer.validated_data["email"]
+                serializer.validated_data["password"]
+                #stayLoggedin value doesn't exist in the user model provided by Django so it is checked here for the token generation
+                 
+            except KeyError:
+                return Response({"error": "Some data is missing"}, status=status.HTTP_400_BAD_REQUEST)
+            try:
+                User.objects.get(email=serializer.validated_data["email"])
+            except User.DoesNotExist:
+                try:
+                    user = User.objects.create_user(username=serializer.validated_data["email"],email=serializer.validated_data["email"],password=serializer.validated_data["password"])
+
+                except Exception as e:
+                    return Response({"error": "Please try again later"}, status=status.HTTP_503_SERVICE_UNAVAILABLE)
+                #generate token for the created User to have access to the RT website.
+                jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
+                jwt_encode_handler = api_settings.JWT_ENCODE_HANDLER
+                payload = jwt_payload_handler(user)
+                token = jwt_encode_handler(payload)
+                # email verification is missing (To be Done in next years)
+                return Response({"token": token}, status=status.HTTP_201_CREATED)
+            else:
+                return Response({"error": "The Email Already Exists!"}, status=status.HTTP_401_UNAUTHORIZED)
+                
+                try:
+                    #check if the email entered as a social user email that already exist 
+                    SocialUsers.objects.get(user=User.objects.get(email=serializer.validated_data["email"]))
+                except SocialUsers.DoesNotExist:
+                    #No IT DOESN'T EXIST AS A SOCIAL ACCOUNT , BUT IT EXISTS AS A NORMAL ACCOUNT 
+                    return Response({"error": "The Email Already Exists!"}, status=status.HTTP_401_UNAUTHORIZED)
+                else:
+                    #YES IT EXISTS AS A SOCIAL ACCOUNT
+                    return Response({"error": "The Email exist as a social account"},status=status.HTTP_401_UNAUTHORIZED)
+                
+        else:
+            #ERRORS WITH SUBMITTED DATA
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
  
