@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding>
+  <form #signform="ngForm" (ngSubmit)="login(signform)" method="post">
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input ngModel type="email" name="email" required></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label position="floating">Password</ion-label>
+      <ion-input ngModel type="password" name="password" required></ion-input>
+    </ion-item>
+  
+     
+  
+    <ion-button type="submit" expand="full" color="primary" [disabled]="!signform.form.valid">Login</ion-button>
+    <br>
+    <p text-center>Or ?</p>
+
+    <ion-grid>
+      <ion-row>
+       
+        <ion-col col-3>
+
+        </ion-col>
+        <ion-col col-3> 
+         
+          <ion-item lines="none" (click)="doGoogleLogin()">
+            <ion-icon name="logo-google" color="danger" style="font-size: 40px;"></ion-icon>
+          </ion-item>
+        </ion-col>
+        <ion-col col-3>
+          <ion-item lines="none" (click)="doFbLogin()">
+            <ion-icon name="logo-facebook" color="primary" style="font-size: 40px;" ></ion-icon>
+          </ion-item>
+        </ion-col>
+        <ion-col col-3>
+          
+
+        </ion-col>
+      </ion-row>
+       
+        </ion-grid>
+   
+
+  </form>
+  <p text-center>Don't have a account?</p>
+  <ion-button expand="full" color="danger" routerLink="/register" routerDirection="forward" >Register</ion-button>
+ 
+</ion-content>
+<!--
+   <ion-button expand="full" color="danger" (click)="doFbLogin()" >Facebook</ion-button>
+  <ion-button expand="full" color="danger" (click)="doGoogleLogin()" >Google</ion-button>
+-->
