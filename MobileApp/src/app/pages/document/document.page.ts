@@ -5,7 +5,8 @@ import {   HttpHeaders } from '@angular/common/http'
 import {Router,ActivatedRoute} from '@angular/router';
 import { KeyRegistry } from '@angular/core/src/di/reflective_key';
 import { NavController } from '@ionic/angular';
- 
+import { ToastController } from '@ionic/angular';
+import { AlertController } from '@ionic/angular';
 @Component({
   selector: 'app-document',
   templateUrl: './document.page.html',
@@ -13,7 +14,7 @@ import { NavController } from '@ionic/angular';
 })
 export class DocumentPage implements OnInit {
    
-  constructor(private storage:Storage,private service:ScanServicesService,private router: Router,private route: ActivatedRoute,public navCtrl: NavController) { }
+  constructor(private storage:Storage,private service:ScanServicesService,private router: Router,private route: ActivatedRoute,public navCtrl: NavController,public toastController: ToastController,public alertController: AlertController) { }
 document:any;
 id:any
 keys=[]
@@ -62,17 +63,8 @@ readOnly=true
     this.readOnly=false
   }
   delete(){
-    this.storage.get('auth-token').then(res => {
-      if (res) {
-        const headers = new HttpHeaders().set('Authorization', 'Bearer '+res)
-        this.service.deleteDocument(headers,this.id).subscribe(res=>{
-          console.log(res)
-           this.router.navigate(['/menu/main'])
-        },err=>{
-          console.log(err)
-        })
-      }
-    })
+    this.presentAlertConfirm()
+     
   }
   ionViewWillEnter(){
     console.log("entered")
@@ -119,6 +111,7 @@ readOnly=true
         this.service.editDocument(headers,body,this.id).subscribe(res=>{
           console.log(res)
           this.readOnly=true
+          this.presentToast('The Document is edited Successfully!')
            this.router.navigate(['/menu/document/'+this.id])
             
            //this.navCtrl.navigateRoot('/document/'+this.id)
@@ -130,6 +123,49 @@ readOnly=true
     
     
 
+  }
+  async presentToast(msg) {
+    const toast = await this.toastController.create({
+      message: msg,
+      color:'dark',
+      duration: 4000
+    });
+    toast.present();
+  }
+  async presentAlertConfirm() {
+    const alert = await this.alertController.create({
+      header: 'Alert',
+      message: '<strong>Are you sure you want to delete this Document</strong>?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Confirm',
+          handler: () => {
+            console.log('Confirm Okay');
+            this.storage.get('auth-token').then(res => {
+              if (res) {
+                const headers = new HttpHeaders().set('Authorization', 'Bearer '+res)
+                this.service.deleteDocument(headers,this.id).subscribe(res=>{
+                  console.log(res)
+                  this.presentToast('The Document is deleted Successfully!')
+                   this.router.navigate(['/menu/main'])
+                },err=>{
+                  console.log(err)
+                })
+              }
+            })
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
 
   }

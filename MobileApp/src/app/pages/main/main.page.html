@@ -8,6 +8,11 @@
 </ion-header>
  
 <ion-content padding>
+  <div *ngIf="checkData()" text-center>
+<h2>
+  No Documents Available
+</h2>
+  </div>
     <div *ngFor="let d of documents">
     <ion-card (click)="selectDocument(d.id)">
         <ion-card-header>
@@ -16,8 +21,16 @@
         </ion-card-header>
       
         <ion-card-content>
-           
+          <div *ngIf="d.docType==0">{{d.data.id}}</div>
+          <div *ngIf="d.docType==1">{{d.data.ID}}</div>
         </ion-card-content>
       </ion-card>
       </div>
+      
 </ion-content>
+
+<ion-footer >
+    <ion-toolbar position="bottom">
+      <ion-button  expand="full" color="primary" (click)="showSheet()">Add Document</ion-button>
+    </ion-toolbar>
+  </ion-footer>

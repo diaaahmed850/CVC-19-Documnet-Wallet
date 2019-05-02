@@ -106,7 +106,7 @@ def stringToRGB(base64_string,type):
     return cv2.cvtColor(np.array(image), cv2.COLOR_BGR2RGB)
 
 def idscanner(img):
-    MIN_MATCH_COUNT=2
+    MIN_MATCH_COUNT=350
     detector=cv2.xfeatures2d.SIFT_create()
 
     FLANN_INDEX_KDITREE=0
@@ -140,6 +140,7 @@ def idscanner(img):
         queryBorder=cv2.perspectiveTransform(trainBorder,H)
     else:
         print ("Not Enough match found- %d/%d"%(len(goodMatch),MIN_MATCH_COUNT))
+        return None,'fail'
     warped = four_point_transform(QueryImgBGR, queryBorder.reshape(4, 2))
     warped=cv2.resize(warped,(1600,990))
     cv2.rectangle(warped, (650, 740), (1540, 900), (0, 255, 0), 2)
@@ -168,7 +169,7 @@ def idscanner(img):
     data={
         'id':id_num,'name':id_name,'address':id_address,'code':id_code
     }
-    return data
+    return data,'success'
 
 class IDView(APIView):
      
@@ -176,16 +177,21 @@ class IDView(APIView):
         imgstring=request.data['img']
         img=stringToRGB(imgstring,'i')
          
-        res=idscanner(img)
-        f= open("id_log.txt","a+")
-        text="**************************************************************************************************\n"
-        for key, value in res.items():
-            text=text+key+" :"+value+"\n"
-        text=text+"****************************************"+"test"+str(num1-1)+"**********************************************************\n"
-        f.write(text)
-        f.close()
-        print(res)
-        return Response(res, status=status.HTTP_200_OK)
+        res,state=idscanner(img)
+        if(state=='success'):
+            f= open("id_log.txt","a+")
+            text="**************************************************************************************************\n"
+            for key, value in res.items():
+                text=text+key+" :"+value+"\n"
+            text=text+"****************************************"+"test"+str(num1-1)+"**********************************************************\n"
+            f.write(text)
+            f.close()
+            print(res)
+            return Response(res, status=status.HTTP_200_OK)
+        elif(state=='fail'):
+            return Response({"error": "Please Provide a good match national ID"}, status=status.HTTP_406_NOT_ACCEPTABLE)
+
+        
 
 
 class documentView(APIView):

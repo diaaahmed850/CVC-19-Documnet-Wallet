@@ -3,14 +3,16 @@ import {ScanServicesService} from '../../services/scan-services.service'
 import {   HttpHeaders } from '@angular/common/http'
 import { Storage } from '@ionic/storage';
 import {Router,ActivatedRoute} from '@angular/router';
+import { ActionSheetController } from '@ionic/angular';
+
 @Component({
   selector: 'app-main',
   templateUrl: './main.page.html',
   styleUrls: ['./main.page.scss'],
 })
 export class MainPage implements OnInit {
-documents:any
-  constructor(private storage:Storage,private service:ScanServicesService,private router:Router) { }
+documents:any=[]
+  constructor(private storage:Storage,private service:ScanServicesService,private router:Router,public actionSheetController: ActionSheetController) { }
 
   ngOnInit() {
     /*this.storage.get('auth-token').then(res => {
@@ -43,6 +45,52 @@ documents:any
   selectDocument(id){
     this.router.navigate(['/menu/document/'+id])
 
+  }
+  showSheet(){
+    this.presentActionSheet()
+  }
+
+  async presentActionSheet() {
+    const actionSheet = await this.actionSheetController.create({
+      header: 'Type of Documents',
+      buttons: [ {
+        text: 'National ID',
+        handler: () => {
+          this.router.navigate(['/menu/add/Natinal ID'])
+        }
+      }, {
+        text: 'Passport',
+        handler: () => {
+          this.router.navigate(['/menu/add/Passport'])
+        }
+      }, {
+        text: 'Car Licence',
+        handler: () => {
+          console.log('Favorite clicked');
+        }
+      }, {
+        text: 'Business Card',
+        handler: () => {
+          console.log('Favorite clicked');
+        }
+      },{
+        text: 'Cancel',
+        icon: 'close',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      }]
+    });
+    await actionSheet.present();
+  }
+  checkData(){
+    if(this.documents.length==0){
+      return true
+    }
+    else{
+      return false
+    }
   }
    
 

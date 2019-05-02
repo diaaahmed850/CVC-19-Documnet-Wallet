@@ -6,6 +6,7 @@ import { Facebook } from '@ionic-native/facebook/ngx';
 import { GooglePlus } from '@ionic-native/google-plus/ngx';
  
 import {ScanServicesService} from './scan-services.service'
+import { AlertController } from '@ionic/angular';
 const TOKEN_KEY = 'auth-token';
  
 @Injectable({
@@ -15,7 +16,7 @@ export class AuthenticationService {
  
   authenticationState = new BehaviorSubject(false);
  
-  constructor(private storage: Storage, private plt: Platform,private service:ScanServicesService,private fb: Facebook,private googlePlus:GooglePlus) { 
+  constructor(private storage: Storage, private plt: Platform,private service:ScanServicesService,private fb: Facebook,private googlePlus:GooglePlus,public alertController: AlertController) { 
     this.plt.ready().then(() => {
       this.checkToken();
     });
@@ -36,9 +37,21 @@ export class AuthenticationService {
         this.authenticationState.next(true);
       });
     },err=>{
-      console.log(err)
+      console.log(err.error.Error)
+      this.presentAlert(err.error.Error)
+      
+    
     })
      
+  }
+  async presentAlert(err) {
+    const alert = await this.alertController.create({
+      header: 'Alert',
+      message: err,
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
   socialLogin(data) {
     this.service.socialLogin(data).subscribe(res=>{
@@ -47,7 +60,8 @@ export class AuthenticationService {
         this.authenticationState.next(true);
       });
     },err=>{
-      console.log(err)
+      console.log(err.error.Error)
+      this.presentAlert(err.error.Error)
     })
      
   }
@@ -58,7 +72,8 @@ export class AuthenticationService {
         this.authenticationState.next(true);
       });
     },err=>{
-      console.log(err)
+      console.log(err.error.Error)
+      this.presentAlert(err.error.error)
     })
      
   }

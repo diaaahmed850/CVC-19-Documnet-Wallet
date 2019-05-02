@@ -5,6 +5,7 @@ import { LoadingController } from '@ionic/angular';
 import {ScanServicesService} from '../../services/scan-services.service'
 import { Storage } from '@ionic/storage';
 import {   HttpHeaders } from '@angular/common/http'
+import { AlertController } from '@ionic/angular';
 @Component({
   selector: 'app-add-document',
   templateUrl: './add-document.page.html',
@@ -12,7 +13,7 @@ import {   HttpHeaders } from '@angular/common/http'
 })
 export class AddDocumentPage implements OnInit {
 
-  constructor(private router: Router,private route: ActivatedRoute,private camera: Camera,public loadingController: LoadingController,private service:ScanServicesService,private storage:Storage) { }
+  constructor(private router: Router,private route: ActivatedRoute,private camera: Camera,public loadingController: LoadingController,private service:ScanServicesService,private storage:Storage,public alertController: AlertController) { }
   type:any=''
   image:any=''
   data:any='';
@@ -21,12 +22,23 @@ export class AddDocumentPage implements OnInit {
     "Natinal ID":0,
     "Passport":1
   }
+   
+  
   ngOnInit() {
     this.route.params.subscribe( params =>{
       console.log(params['type'])
       this.type=params['type']
 
   })
+  }
+  async presentAlert(err) {
+    const alert = await this.alertController.create({
+      header: 'Alert',
+      message: err,
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
   openCam(){
     const options: CameraOptions = {
@@ -60,7 +72,8 @@ export class AddDocumentPage implements OnInit {
        console.log(res)
  
       },err=>{
- 
+        this.hideLoader()
+        this.presentAlert(err.error.error)
       })
 
      }
