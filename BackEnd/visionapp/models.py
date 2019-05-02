@@ -17,3 +17,8 @@ class documentModel(models.Model):
     user=models.ForeignKey(User, on_delete=models.CASCADE)
     docType=models.SmallIntegerField(default=2, choices=types)
     data=jsonFieldHelper()
+    
+class SocialUsers(models.Model):
+    user = models.OneToOneField(User,on_delete=models.CASCADE)
+    provider = models.CharField(max_length=8, choices=providers)
+    socialID = models.CharField(max_length=100)
