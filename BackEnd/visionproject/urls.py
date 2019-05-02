@@ -20,5 +20,6 @@ from visionapp import views
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls), 
+    path('doc', views.documentView.as_view()),
+    path('doc/<int:pk>', views.documentDetailView.as_view()),
 ]
