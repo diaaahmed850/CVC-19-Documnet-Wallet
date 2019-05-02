@@ -17,3 +17,13 @@ class createDocumentSerializer(serializers.ModelSerializer):
     class Meta:
         model = documentModel
         fields = ('docType','data','title')
+class SocialSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SocialUsers
+        fields = ('provider','socialID')
+
+
+class SocialUsersSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('email',)
