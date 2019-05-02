@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Home</ion-title>
+  </ion-toolbar>
+</ion-header>
+ 
+<ion-content padding>
+    <div *ngFor="let d of documents">
+    <ion-card (click)="selectDocument(d.id)">
+        <ion-card-header>
+           
+          <ion-card-title>{{d.title}}</ion-card-title>
+        </ion-card-header>
+      
+        <ion-card-content>
+           
+        </ion-card-content>
+      </ion-card>
+      </div>
+</ion-content>
