@@ -29,6 +29,7 @@ import io
 import os
 import re
 from .Natinal_ID.NatinalID import *
+from .Passport.Passport import *
 num1=0
 num2=0
 def stringToRGB(base64_string,type):
@@ -44,6 +45,16 @@ def stringToRGB(base64_string,type):
     return cv2.cvtColor(np.array(image), cv2.COLOR_BGR2RGB)
 
 class IDView(APIView):
+     
+    def post(self,request):
+        try:
+            imgstring=request.data['img']
+            img=stringToRGB(imgstring,'i')
+            res=PassportScanner(img)
+            return Response(res, status=status.HTTP_200_OK)
+        except Exception as e:
+            return Response({"error": "Please Provide a good match Passport"}, status=status.HTTP_406_NOT_ACCEPTABLE)
+class PassportView(APIView):
      
     def post(self,request):
         try:
