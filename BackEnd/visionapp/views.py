@@ -50,20 +50,20 @@ class IDView(APIView):
         try:
             imgstring=request.data['img']
             img=stringToRGB(imgstring,'i')
-            res=PassportScanner(img)
+            res=IDScanner(img)
             return Response(res, status=status.HTTP_200_OK)
         except Exception as e:
-            return Response({"error": "Please Provide a good match Passport"}, status=status.HTTP_406_NOT_ACCEPTABLE)
+            return Response({"error": "Please Provide a good match national ID"}, status=status.HTTP_406_NOT_ACCEPTABLE)
 class PassportView(APIView):
      
     def post(self,request):
         try:
             imgstring=request.data['img']
             img=stringToRGB(imgstring,'i')
-            res=IDScanner(img)
+            res=PassportScanner(img)
             return Response(res, status=status.HTTP_200_OK)
         except Exception as e:
-            return Response({"error": "Please Provide a good match national ID"}, status=status.HTTP_406_NOT_ACCEPTABLE)
+            return Response({"error": "Please Provide a good match Passport"}, status=status.HTTP_406_NOT_ACCEPTABLE)
 
 
 class documentView(APIView):
