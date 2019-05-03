@@ -162,9 +162,14 @@ def LicenseScanner(InputImage):
         
     Char1,Char2,Char3 = Char1,Char2,Char3
     Num = Numbers
+    letters=""
+    if Char3=='':
+        letters=Char1+' '+Char2
+    else:
+        letters=Char1+' '+Char2+' '+Char3
 
     data={
-        "Letters":Char1+' '+Char2+' '+Char3,
+        "Letters":letters,
         "Numbers":Num
     }
 

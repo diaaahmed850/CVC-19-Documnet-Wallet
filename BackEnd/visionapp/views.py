@@ -31,6 +31,7 @@ import re
 from .Natinal_ID.NatinalID import *
 from .Passport.Passport import *
 from .Licence.Licence import *
+from .Licence.LisenceAPI import *
 num1=0
 num2=0
 def stringToRGB(base64_string,type):
@@ -76,7 +77,22 @@ class LicenceView(APIView):
         except Exception as e:
             return Response({"error": "Please Provide a good match Licence"}, status=status.HTTP_406_NOT_ACCEPTABLE)
 
-
+class LicenceFinesView(APIView):
+    def post(self,request):
+        try:
+            data=request.data
+            letters=data['Letters']
+            numbers=data['Numbers']
+            letters_list=letters.split(' ')
+            res=''
+            if len(letters_list) == 3:
+                res=GetFines(letters_list[0],letters_list[1],letters_list[2],numbers)
+            elif len(letters_list) == 2:
+                res=GetFines(letters_list[0],letters_list[1],'',numbers)
+            return Response(res, status=status.HTTP_200_OK)
+        except Exception as e:
+            print(e)
+            return Response({"error": "Please Provide a good match Licence"}, status=status.HTTP_406_NOT_ACCEPTABLE)
 
 class documentView(APIView):
     def get(self,request):

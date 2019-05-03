@@ -29,5 +29,6 @@ urlpatterns = [
     path('id', views.IDView.as_view()),
     path('passport', views.PassportView.as_view()),
     path('licence', views.LicenceView.as_view()),
+    path('fines', views.LicenceFinesView.as_view()),
 
 ]

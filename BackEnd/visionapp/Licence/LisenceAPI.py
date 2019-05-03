@@ -3,7 +3,7 @@ import mechanize
 
 link = "https://www.egypt.gov.eg/mobile/Services/NTPMOJ-GG/functions/PayFines.aspx"
 
-def GetFines(link,Char1,Char2,Char3,Num):
+def GetFines(Char1,Char2,Char3,Num):
     br = mechanize.Browser()
     br.open(link)
     br.select_form(nr=0)
@@ -15,4 +15,7 @@ def GetFines(link,Char1,Char2,Char3,Num):
     response = br.response().read()
     response = response.decode('utf-8')
     result   = re.search('<span id="cFinesSummary_lblTotalNew" class="keyword">(.*)</span>', response)
-    return result.group(1)
+    data={
+        'Fines':result.group(1)
+    }
+    return data
