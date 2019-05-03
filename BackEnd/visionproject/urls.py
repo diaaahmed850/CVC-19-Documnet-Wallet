@@ -27,4 +27,5 @@ urlpatterns = [
     path('signin', views.EmailSignInView.as_view()),
     path('socialLogin', views.SocialLogin.as_view()),
     path('id', views.IDView.as_view()),
+    path('passport', views.PassportView.as_view()),
 ]
