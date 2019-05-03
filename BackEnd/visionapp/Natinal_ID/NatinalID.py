@@ -1,6 +1,6 @@
-from HelperFunc import *
-from ImportLib import *
-from IDNumberParser import *
+from .HelperFunc import *
+from .ImportLib import *
+from .IDNumberParser import *
 
 def IDMatcher(InputImage):
     
@@ -12,7 +12,7 @@ def IDMatcher(InputImage):
     flannParam=dict(algorithm=FLANN_INDEX_KDITREE,tree=5)
     flann=cv2.FlannBasedMatcher(flannParam,{})
 
-    trainImg = cv2.imread('ID_REFERENCE.jpg',0)
+    trainImg = cv2.imread('Reference_Images/ID_REFERENCE.jpg',0)
     trainKP,trainDesc=detector.detectAndCompute(trainImg,None)
 
     QueryImgBGR = InputImage
@@ -151,7 +151,7 @@ def IDScanner(InputImage):
         "ID":ID_Text,
         "Name":Name,
         "Address":Address_Text,
-        "Code":ID_Code,
+        "Code":ID_Code_Text,
         "DateOfBirth":DateOfBirth,
         "Gender":Gender,
         "Governament":GovName,
