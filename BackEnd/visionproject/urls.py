@@ -30,6 +30,6 @@ urlpatterns = [
     path('passport', views.PassportView.as_view()),
     path('licence', views.LicenceView.as_view()),
     path('fines', views.LicenceFinesView.as_view()),
-    path('businesscaed', views.BusinessCardView.as_view())
+    path('businesscard', views.BusinessCardView.as_view())
 
 ]

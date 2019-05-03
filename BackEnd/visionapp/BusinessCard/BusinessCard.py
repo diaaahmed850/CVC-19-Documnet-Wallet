@@ -106,18 +106,18 @@ def BusinessScanner(InputImage):
         if i==0:
             data.update({"Name":Name[i]})
         else:
-            data.update({"Name " + i:Name[i]})
+            data.update({"Name" + str(i):Name[i]})
     for i in range(len(Phone)):
         if i==0:
             data.update({"Phone":Phone[i]})
         else:
-            data.update({"Phone " + i:Phone[i]})
+            data.update({"Phone " + str(i):Phone[i]})
     
     for i in range(len(Email)):
         if i==0:
             data.update({"Email":Email[i]})
         else:
-            data.update({"Email " + i:Email[i]})
+            data.update({"Email " + str(i):Email[i]})
     
     return data
     

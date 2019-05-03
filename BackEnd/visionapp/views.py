@@ -103,6 +103,7 @@ class BusinessCardView(APIView):
             res=BusinessScanner(img)
             return Response(res, status=status.HTTP_200_OK)
         except Exception as e:
+            print(e)
             return Response({"error": "Please Provide a good match Business Card"}, status=status.HTTP_406_NOT_ACCEPTABLE)
 
 class documentView(APIView):
