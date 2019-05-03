@@ -106,7 +106,7 @@ def stringToRGB(base64_string,type):
     return cv2.cvtColor(np.array(image), cv2.COLOR_BGR2RGB)
 
 def idscanner(img):
-    MIN_MATCH_COUNT=350
+    MIN_MATCH_COUNT=2
     detector=cv2.xfeatures2d.SIFT_create()
 
     FLANN_INDEX_KDITREE=0
