@@ -32,6 +32,7 @@ from .Natinal_ID.NatinalID import *
 from .Passport.Passport import *
 from .Licence.Licence import *
 from .Licence.LisenceAPI import *
+from .BusinessCard.BusinessCard import *
 num1=0
 num2=0
 def stringToRGB(base64_string,type):
@@ -93,6 +94,16 @@ class LicenceFinesView(APIView):
         except Exception as e:
             print(e)
             return Response({"error": "Please Provide a good match Licence"}, status=status.HTTP_406_NOT_ACCEPTABLE)
+
+class BusinessCardView(APIView):
+    def post(self,request):
+        try:
+            imgstring=request.data['img']
+            img=stringToRGB(imgstring,'i')
+            res=BusinessScanner(img)
+            return Response(res, status=status.HTTP_200_OK)
+        except Exception as e:
+            return Response({"error": "Please Provide a good match Business Card"}, status=status.HTTP_406_NOT_ACCEPTABLE)
 
 class documentView(APIView):
     def get(self,request):

@@ -1,6 +1,6 @@
-from HelperFunc import *
-from ImportLib import *
-from BusinessCardParser import *
+from .HelperFunc import *
+from .ImportLib import *
+from .BusinessCardParser import *
 
 def BusinessCutter(InputImage):
     
