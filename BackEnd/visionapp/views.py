@@ -30,6 +30,7 @@ import os
 import re
 from .Natinal_ID.NatinalID import *
 from .Passport.Passport import *
+from .Licence.Licence import *
 num1=0
 num2=0
 def stringToRGB(base64_string,type):
@@ -44,8 +45,7 @@ def stringToRGB(base64_string,type):
     num1=num1+1
     return cv2.cvtColor(np.array(image), cv2.COLOR_BGR2RGB)
 
-class IDView(APIView):
-     
+class IDView(APIView):    
     def post(self,request):
         try:
             imgstring=request.data['img']
@@ -54,8 +54,9 @@ class IDView(APIView):
             return Response(res, status=status.HTTP_200_OK)
         except Exception as e:
             return Response({"error": "Please Provide a good match national ID"}, status=status.HTTP_406_NOT_ACCEPTABLE)
+
+
 class PassportView(APIView):
-     
     def post(self,request):
         try:
             imgstring=request.data['img']
@@ -64,6 +65,17 @@ class PassportView(APIView):
             return Response(res, status=status.HTTP_200_OK)
         except Exception as e:
             return Response({"error": "Please Provide a good match Passport"}, status=status.HTTP_406_NOT_ACCEPTABLE)
+
+class LicenceView(APIView):
+    def post(self,request):
+        try:
+            imgstring=request.data['img']
+            img=stringToRGB(imgstring,'i')
+            res=LicenseScanner(img)
+            return Response(res, status=status.HTTP_200_OK)
+        except Exception as e:
+            return Response({"error": "Please Provide a good match Licence"}, status=status.HTTP_406_NOT_ACCEPTABLE)
+
 
 
 class documentView(APIView):

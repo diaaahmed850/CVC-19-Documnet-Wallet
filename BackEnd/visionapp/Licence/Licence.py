@@ -1,5 +1,5 @@
-from helper import *
-from ImportLib import *
+from .HelperFunc import *
+from .ImportLib import *
 
 def LicenseMatcher(InputImage):
     MIN_MATCH_COUNT = 2
@@ -9,7 +9,7 @@ def LicenseMatcher(InputImage):
     flannParam=dict(algorithm=FLANN_INDEX_KDITREE,tree=5)
     flann=cv2.FlannBasedMatcher(flannParam,{})
 
-    trainImg=cv2.imread("REF_LICENSE.jpg",0)
+    trainImg=cv2.imread("Reference_Images/REF_LICENSE.jpg",0)
     trainKP,trainDesc=detector.detectAndCompute(trainImg,None)
 
     QueryImgBGR = InputImage
