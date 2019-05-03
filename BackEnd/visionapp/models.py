@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.postgres.fields import JSONField
 import json
 
-types=[(0,'ID'),(1,'Passport'),(2,'Other')]
+types=[(0,'ID'),(1,'Passport'),(2,'Licence'),(3,'BusinessCard')]
 providers = [('facebook', 'Facebook'), ('google', 'Google')]
 
 class jsonFieldHelper(JSONField):
@@ -17,7 +17,7 @@ class documentModel(models.Model):
     user=models.ForeignKey(User, on_delete=models.CASCADE)
     docType=models.SmallIntegerField(default=2, choices=types)
     data=jsonFieldHelper()
-    
+
 class SocialUsers(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE)
     provider = models.CharField(max_length=8, choices=providers)
