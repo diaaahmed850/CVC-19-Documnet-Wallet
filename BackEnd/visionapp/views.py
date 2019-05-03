@@ -101,6 +101,7 @@ class BusinessCardView(APIView):
             imgstring=request.data['img']
             img=stringToRGB(imgstring,'i')
             res=BusinessScanner(img)
+            print(res)
             return Response(res, status=status.HTTP_200_OK)
         except Exception as e:
             print(e)
