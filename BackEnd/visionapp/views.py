@@ -39,12 +39,6 @@ def stringToRGB(base64_string,type):
     global num1
     imgdata = base64.b64decode(str(base64_string))
     image = Image.open(io.BytesIO(imgdata))
-    if type=='i':
-        image.save('test_data_ID/test'+str(num1)+'.jpg')
-    elif type =='p':
-        image.save('test_data_passport/test'+str(num2)+'.jpg')
-    
-    num1=num1+1
     return cv2.cvtColor(np.array(image), cv2.COLOR_BGR2RGB)
 
 class IDView(APIView):    
