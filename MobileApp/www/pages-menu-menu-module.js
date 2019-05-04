@@ -88,7 +88,7 @@ module.exports = "<ion-menu contentId=\"content\">\n \n  <ion-header>\n    <ion-
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".active {\n  --ion-text-color: var(--ion-color-primary); }\n  .active ion-icon {\n    --ion-text-color-rgb: var(--ion-color-primary); }\n  .parent-active {\n  font-weight: 500; }\n  .sub-item {\n  padding-left: 20px;\n  font-size: small; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2RpYWEvRGVza3RvcC92aXNpb24xOV9wcm9qZWN0L3Zpc2lvbjE5X0FwcC9zcmMvYXBwL3BhZ2VzL21lbnUvbWVudS5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSwwQ0FBaUIsRUFBQTtFQURyQjtJQUlRLDhDQUFxQixFQUFBO0VBSTdCO0VBQ0ksZ0JBQWdCLEVBQUE7RUFHcEI7RUFDSSxrQkFBa0I7RUFDbEIsZ0JBQWdCLEVBQUEiLCJmaWxlIjoic3JjL2FwcC9wYWdlcy9tZW51L21lbnUucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmFjdGl2ZSB7XG4gICAgLS1pb24tdGV4dC1jb2xvcjogdmFyKC0taW9uLWNvbG9yLXByaW1hcnkpO1xuIFxuICAgIGlvbi1pY29uIHtcbiAgICAgICAgLS1pb24tdGV4dC1jb2xvci1yZ2I6IHZhcigtLWlvbi1jb2xvci1wcmltYXJ5KTtcbiAgICB9XG59XG4gXG4ucGFyZW50LWFjdGl2ZSB7XG4gICAgZm9udC13ZWlnaHQ6IDUwMDtcbn1cbiBcbi5zdWItaXRlbSB7XG4gICAgcGFkZGluZy1sZWZ0OiAyMHB4O1xuICAgIGZvbnQtc2l6ZTogc21hbGw7XG59Il19 */"
+module.exports = ".active {\n  --ion-text-color: var(--ion-color-primary); }\n  .active ion-icon {\n    --ion-text-color-rgb: var(--ion-color-primary); }\n  .parent-active {\n  font-weight: 500; }\n  .sub-item {\n  padding-left: 20px;\n  font-size: small; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2RpYWEvRGVza3RvcC9WaXNpb24xOS9Nb2JpbGVBcHAvc3JjL2FwcC9wYWdlcy9tZW51L21lbnUucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksMENBQWlCLEVBQUE7RUFEckI7SUFJUSw4Q0FBcUIsRUFBQTtFQUk3QjtFQUNJLGdCQUFnQixFQUFBO0VBR3BCO0VBQ0ksa0JBQWtCO0VBQ2xCLGdCQUFnQixFQUFBIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvbWVudS9tZW51LnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5hY3RpdmUge1xuICAgIC0taW9uLXRleHQtY29sb3I6IHZhcigtLWlvbi1jb2xvci1wcmltYXJ5KTtcbiBcbiAgICBpb24taWNvbiB7XG4gICAgICAgIC0taW9uLXRleHQtY29sb3ItcmdiOiB2YXIoLS1pb24tY29sb3ItcHJpbWFyeSk7XG4gICAgfVxufVxuIFxuLnBhcmVudC1hY3RpdmUge1xuICAgIGZvbnQtd2VpZ2h0OiA1MDA7XG59XG4gXG4uc3ViLWl0ZW0ge1xuICAgIHBhZGRpbmctbGVmdDogMjBweDtcbiAgICBmb250LXNpemU6IHNtYWxsO1xufSJdfQ== */"
 
 /***/ }),
 
@@ -131,6 +131,16 @@ var MenuPage = /** @class */ (function () {
                     {
                         title: 'Passport',
                         url: '/menu/add/Passport',
+                        icon: 'add'
+                    },
+                    {
+                        title: 'Licence',
+                        url: '/menu/add/Licence',
+                        icon: 'add'
+                    },
+                    {
+                        title: 'Business Card',
+                        url: '/menu/add/Business Card',
                         icon: 'add'
                     }
                 ]

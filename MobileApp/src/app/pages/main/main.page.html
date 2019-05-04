@@ -21,8 +21,10 @@
         </ion-card-header>
       
         <ion-card-content>
-          <div *ngIf="d.docType==0">{{d.data.id}}</div>
-          <div *ngIf="d.docType==1">{{d.data.ID}}</div>
+          <div *ngIf="d.docType==0">{{d.data.ID}}</div>
+          <div *ngIf="d.docType==1">{{d.data.PassportNumber}}</div>
+          <div *ngIf="d.docType==2">{{d.data.Numbers}} {{d.data.Letters}}</div>
+          <div *ngIf="d.docType==3">{{d.data.Name}}</div>
         </ion-card-content>
       </ion-card>
       </div>

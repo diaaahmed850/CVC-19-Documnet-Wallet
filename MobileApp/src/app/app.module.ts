@@ -9,10 +9,12 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { Camera } from '@ionic-native/camera/ngx';
+import { CameraPreview} from '@ionic-native/camera-preview/ngx';
 import { Facebook } from '@ionic-native/facebook/ngx';
 import { Autosize} from './directives/autosize.directive';
 import { IonicStorageModule } from '@ionic/storage';
 import { GooglePlus } from '@ionic-native/google-plus/ngx';
+import { Contacts} from '@ionic-native/contacts/ngx';
 @NgModule({
   declarations: [AppComponent, Autosize],
   entryComponents: [],
@@ -26,7 +28,9 @@ import { GooglePlus } from '@ionic-native/google-plus/ngx';
   ],
   providers: [
     GooglePlus,
+    CameraPreview,
     Camera,
+    Contacts,
     Facebook,
     StatusBar,
     SplashScreen,

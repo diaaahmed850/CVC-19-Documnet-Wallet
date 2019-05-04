@@ -25,6 +25,16 @@ export class MenuPage implements OnInit {
           title: 'Passport',
           url: '/menu/add/Passport',
           icon: 'add'
+        },
+        {
+          title: 'Licence',
+          url: '/menu/add/Licence',
+          icon: 'add'
+        },
+        {
+          title: 'Business Card',
+          url: '/menu/add/Business Card',
+          icon: 'add'
         }
          
       ]

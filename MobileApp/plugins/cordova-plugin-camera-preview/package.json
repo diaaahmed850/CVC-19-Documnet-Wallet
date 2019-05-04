@@ -1,0 +1,64 @@
+{
+  "_from": "cordova-plugin-camera-preview",
+  "_id": "cordova-plugin-camera-preview@0.10.0",
+  "_inBundle": false,
+  "_integrity": "sha512-J4b5S8iKslHye/7qnUIdWXm8jbFQqfEYnYjaPSnzMdZQ+PKLLAfPVV6F6Z7yEyg/Fn3LnEC9hoOhdFUvnqWfIw==",
+  "_location": "/cordova-plugin-camera-preview",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "cordova-plugin-camera-preview",
+    "name": "cordova-plugin-camera-preview",
+    "escapedName": "cordova-plugin-camera-preview",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-camera-preview/-/cordova-plugin-camera-preview-0.10.0.tgz",
+  "_shasum": "8f0bf7ae79bdd99b413bc3a18da4c7b5d3389f27",
+  "_spec": "cordova-plugin-camera-preview",
+  "_where": "/home/diaa/Desktop/Vision19/MobileApp",
+  "author": {
+    "name": "Weston Ganger",
+    "email": "westonganger@gmail.com",
+    "url": "solidfoundationwebdev.com"
+  },
+  "bugs": {
+    "url": "https://github.com/cordova-plugin-camera-preview/cordova-plugin-camera-preview/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "cordova": "*"
+  },
+  "deprecated": false,
+  "description": "Cordova plugin that allows camera interaction from HTML code for showing camera preview below or on top of the HTML.",
+  "devDependencies": {},
+  "homepage": "https://github.com/cordova-plugin-camera-preview/cordova-plugin-camera-preview",
+  "keywords": [
+    "cordova",
+    "phonegap",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios",
+    "android",
+    "ios",
+    "ionic",
+    "camera",
+    "cam",
+    "camera-preview",
+    "preview"
+  ],
+  "license": "Apache 2.0",
+  "name": "cordova-plugin-camera-preview",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cordova-plugin-camera-preview/cordova-plugin-camera-preview.git"
+  },
+  "typings": "typescript/CameraPreview.d.ts",
+  "version": "0.10.0"
+}

@@ -65,7 +65,7 @@ var MainPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar color=\"primary\">\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>Home</ion-title>\n  </ion-toolbar>\n</ion-header>\n \n<ion-content padding>\n    <div *ngFor=\"let d of documents\">\n    <ion-card (click)=\"selectDocument(d.id)\">\n        <ion-card-header>\n           \n          <ion-card-title>{{d.title}}</ion-card-title>\n        </ion-card-header>\n      \n        <ion-card-content>\n           \n        </ion-card-content>\n      </ion-card>\n      </div>\n</ion-content>"
+module.exports = "<ion-header>\n  <ion-toolbar color=\"primary\">\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>Home</ion-title>\n  </ion-toolbar>\n</ion-header>\n \n<ion-content padding>\n  <div *ngIf=\"checkData()\" text-center>\n<h2>\n  No Documents Available\n</h2>\n  </div>\n    <div *ngFor=\"let d of documents\">\n    <ion-card (click)=\"selectDocument(d.id)\">\n        <ion-card-header>\n           \n          <ion-card-title>{{d.title}}</ion-card-title>\n        </ion-card-header>\n      \n        <ion-card-content>\n          <div *ngIf=\"d.docType==0\">{{d.data.id}}</div>\n          <div *ngIf=\"d.docType==1\">{{d.data.ID}}</div>\n        </ion-card-content>\n      </ion-card>\n      </div>\n      \n</ion-content>\n\n<ion-footer >\n    <ion-toolbar position=\"bottom\">\n      <ion-button  expand=\"full\" color=\"primary\" (click)=\"showSheet()\">Add Document</ion-button>\n    </ion-toolbar>\n  </ion-footer>"
 
 /***/ }),
 
@@ -96,6 +96,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm5/ionic-storage.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+
 
 
 
@@ -103,10 +105,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var MainPage = /** @class */ (function () {
-    function MainPage(storage, service, router) {
+    function MainPage(storage, service, router, actionSheetController) {
         this.storage = storage;
         this.service = service;
         this.router = router;
+        this.actionSheetController = actionSheetController;
+        this.documents = [];
     }
     MainPage.prototype.ngOnInit = function () {
         /*this.storage.get('auth-token').then(res => {
@@ -139,13 +143,71 @@ var MainPage = /** @class */ (function () {
     MainPage.prototype.selectDocument = function (id) {
         this.router.navigate(['/menu/document/' + id]);
     };
+    MainPage.prototype.showSheet = function () {
+        this.presentActionSheet();
+    };
+    MainPage.prototype.presentActionSheet = function () {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var actionSheet;
+            var _this = this;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.actionSheetController.create({
+                            header: 'Type of Documents',
+                            buttons: [{
+                                    text: 'National ID',
+                                    handler: function () {
+                                        _this.router.navigate(['/menu/add/Natinal ID']);
+                                    }
+                                }, {
+                                    text: 'Passport',
+                                    handler: function () {
+                                        _this.router.navigate(['/menu/add/Passport']);
+                                    }
+                                }, {
+                                    text: 'Car Licence',
+                                    handler: function () {
+                                        _this.router.navigate(['/menu/add/Licence']);
+                                    }
+                                }, {
+                                    text: 'Business Card',
+                                    handler: function () {
+                                        _this.router.navigate(['/menu/add/Business Card']);
+                                    }
+                                }, {
+                                    text: 'Cancel',
+                                    icon: 'close',
+                                    role: 'cancel',
+                                    handler: function () {
+                                        console.log('Cancel clicked');
+                                    }
+                                }]
+                        })];
+                    case 1:
+                        actionSheet = _a.sent();
+                        return [4 /*yield*/, actionSheet.present()];
+                    case 2:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    MainPage.prototype.checkData = function () {
+        if (this.documents.length == 0) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    };
     MainPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-main',
             template: __webpack_require__(/*! ./main.page.html */ "./src/app/pages/main/main.page.html"),
             styles: [__webpack_require__(/*! ./main.page.scss */ "./src/app/pages/main/main.page.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_storage__WEBPACK_IMPORTED_MODULE_4__["Storage"], _services_scan_services_service__WEBPACK_IMPORTED_MODULE_2__["ScanServicesService"], _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_storage__WEBPACK_IMPORTED_MODULE_4__["Storage"], _services_scan_services_service__WEBPACK_IMPORTED_MODULE_2__["ScanServicesService"], _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"], _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["ActionSheetController"]])
     ], MainPage);
     return MainPage;
 }());

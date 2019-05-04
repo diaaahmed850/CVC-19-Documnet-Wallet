@@ -39,3 +39,8 @@
          
 
 </ion-content>
+<ion-footer *ngIf="checkLicense()" >
+    <ion-toolbar position="bottom">
+      <ion-button  expand="full" color="primary" (click)="getFines()">Get Fines</ion-button>
+    </ion-toolbar>
+  </ion-footer>

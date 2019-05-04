@@ -111,5 +111,21 @@
     "variables": {
       "REVERSED_CLIENT_ID": "com.googleusercontent.apps.458028829270-smbdqvbccda25mvub718bad88grlfcs8"
     }
+  },
+  "cordova-plugin-camera-preview": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-camera-preview"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-contacts": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-contacts@3.0.1"
+    },
+    "is_top_level": true,
+    "variables": {}
   }
 }

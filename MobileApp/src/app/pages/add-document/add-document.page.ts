@@ -6,6 +6,8 @@ import {ScanServicesService} from '../../services/scan-services.service'
 import { Storage } from '@ionic/storage';
 import {   HttpHeaders } from '@angular/common/http'
 import { AlertController } from '@ionic/angular';
+import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/contacts/ngx';
+import { ToastController } from '@ionic/angular';
 @Component({
   selector: 'app-add-document',
   templateUrl: './add-document.page.html',
@@ -13,14 +15,19 @@ import { AlertController } from '@ionic/angular';
 })
 export class AddDocumentPage implements OnInit {
 
-  constructor(private router: Router,private route: ActivatedRoute,private camera: Camera,public loadingController: LoadingController,private service:ScanServicesService,private storage:Storage,public alertController: AlertController) { }
+  constructor(private router: Router,private route: ActivatedRoute,private camera: Camera,public loadingController: LoadingController,private service:ScanServicesService,private storage:Storage,public alertController: AlertController,private contacts: Contacts,public toastController: ToastController,) { }
   type:any=''
   image:any=''
   data:any='';
   loaderToShow: any;
+  keys=[]
+values=[]
+show=false
   doc_types={
     "Natinal ID":0,
-    "Passport":1
+    "Passport":1,
+    "Licence":2,
+    "Business Card":3
   }
    
   
@@ -31,9 +38,9 @@ export class AddDocumentPage implements OnInit {
 
   })
   }
-  async presentAlert(err) {
+  async presentAlert(header,err) {
     const alert = await this.alertController.create({
-      header: 'Alert',
+      header: header,
       message: err,
       buttons: ['OK']
     });
@@ -41,12 +48,17 @@ export class AddDocumentPage implements OnInit {
     await alert.present();
   }
   openCam(){
+    if(this.show){
+      this.show=false
+    }
     const options: CameraOptions = {
-      quality: 20,
+      quality: 100,
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
       correctOrientation: true,
+      targetWidth: 1500,
+      targetHeight: 1500,
       sourceType:1
   
     }
@@ -69,11 +81,13 @@ export class AddDocumentPage implements OnInit {
       this.service.scanId({'img':imageData}).subscribe(res=>{
         this.hideLoader()
        this.data=res
+       this.parseData(this.data)
+       this.show=true
        console.log(res)
  
       },err=>{
         this.hideLoader()
-        this.presentAlert(err.error.error)
+        this.presentAlert('Alert',err.error.error)
       })
 
      }
@@ -81,12 +95,39 @@ export class AddDocumentPage implements OnInit {
       this.service.scanPassport({'img':imageData}).subscribe(res=>{
         this.hideLoader()
        this.data=res
-       this.data['dob']=this.reverseString(this.data['dob'])
-       this.data['exp_date']=this.reverseString(this.data['exp_date'])
+       this.parseData(this.data)
+       this.show=true
        console.log(res)
  
       },err=>{
+        this.hideLoader()
+        this.presentAlert('Alert',err.error.error)
+      })
+     }
+     else if (this.type=="Licence"){
+      this.service.scanLicence({'img':imageData}).subscribe(res=>{
+        this.hideLoader()
+       this.data=res
+       this.parseData(this.data)
+       this.show=true
+       console.log(res)
  
+      },err=>{
+        this.hideLoader()
+        this.presentAlert('Alert',err.error.error)
+      })
+     }
+     else if (this.type=="Business Card"){
+      this.service.scanBusinessCard({'img':imageData}).subscribe(res=>{
+        this.hideLoader()
+       this.data=res
+       this.parseData(this.data)
+       this.show=true
+       console.log(res)
+ 
+      },err=>{
+        this.hideLoader()
+        this.presentAlert('Alert',err.error.error)
       })
      }
      
@@ -98,12 +139,17 @@ export class AddDocumentPage implements OnInit {
 
   }
   openGallery(){
+    if(this.show){
+      this.show=false
+    }
     const options: CameraOptions = {
-      quality: 20,
+      quality: 100,
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
       correctOrientation: true,
+      targetWidth: 1500,
+      targetHeight: 1500,
       sourceType:0
   
     }
@@ -122,10 +168,13 @@ export class AddDocumentPage implements OnInit {
       this.service.scanId({'img':imageData}).subscribe(res=>{
         this.hideLoader()
        this.data=res
+       this.parseData(this.data)
+       this.show=true
        console.log(res)
  
       },err=>{
- 
+        this.hideLoader()
+        this.presentAlert('Alert',err.error.error)
       })
 
      }
@@ -133,13 +182,39 @@ export class AddDocumentPage implements OnInit {
       this.service.scanPassport({'img':imageData}).subscribe(res=>{
         this.hideLoader()
        this.data=res
-       this.data['dob']=this.reverseString(this.data['dob'])
-       this.data['exp_date']=this.reverseString(this.data['exp_date'])
-        
+       this.parseData(this.data)
+       this.show=true
        console.log(res)
  
       },err=>{
+        this.hideLoader()
+        this.presentAlert('Alert',err.error.error)
+      })
+     }
+     else if (this.type=="Licence"){
+      this.service.scanLicence({'img':imageData}).subscribe(res=>{
+        this.hideLoader()
+       this.data=res
+       this.parseData(this.data)
+       this.show=true
+       console.log(res)
  
+      },err=>{
+        this.hideLoader()
+        this.presentAlert('Alert',err.error.error)
+      })
+     }
+     else if (this.type=="Business Card"){
+      this.service.scanBusinessCard({'img':imageData}).subscribe(res=>{
+        this.hideLoader()
+       this.data=res
+       this.parseData(this.data)
+       this.show=true
+       console.log(res)
+ 
+      },err=>{
+        this.hideLoader()
+        this.presentAlert('Alert',err.error.error)
       })
      }
      
@@ -184,12 +259,94 @@ export class AddDocumentPage implements OnInit {
       return false
     }
   }
-  reverseString(str){
-    str = str.split(""); //convert 'jQuery' to array
-    str = str.reverse(); //reverse 'jQuery' order 
-    str = str.join(""); //then join the reverse order values together
-    return str
+  checkLicense(){
+    if(this.type=="Licence")
+    {
+      return true
+    }
+    else{
+      return false
+    }
   }
+  checkCard(){
+    if(this.type=="Business Card")
+    {
+      return true
+    }
+    else{
+      return false
+    }
+  }
+  getFines(){
+    if(this.type=="Licence"){
+      this.showLoader()
+      this.service.getFines(this.data).subscribe(res=>{
+        this.hideLoader()
+        this.presentAlert('Total Fines','Your Total Fines is : '+res['Fines'])
+      })
+    }
+  }
+saveContacts(){
+  if(this.type=="Business Card"){
+    let contact: Contact = this.contacts.create();
+    contact.displayName=this.data['Name']
+    let keys_length=this.keys.length
+    let phone_fields=[]
+    let email_fields=[]
+    for(let i=0;i<keys_length;i++){
+      if(this.keys[i].includes('Phone')){
+        phone_fields.push(new ContactField(this.keys[i], this.values[i]))
+      }
+      if(this.keys[i].includes('Email')){
+        email_fields.push(new ContactField(this.keys[i], this.values[i]))
+      }
+    }
+    //contact.name = new ContactName(null, 'Smith', 'John');
+    if(phone_fields.length!=0){
+      contact.phoneNumbers = phone_fields;
+    }
+    if(email_fields.length!=0){
+      contact.emails = email_fields;
+    }
+     
+    contact.save().then(
+      () => {console.log('Contact saved!', contact)
+      this.presentAlert('Success','Contact saved!')
+    },
+      (error: any) => {console.error('Error saving contact.', error)
+      this.presentAlert('Error','Error saving contact.')
+    }
+    );
+  }
+  /*let contact: Contact = this.contacts.create();
+
+contact.name = new ContactName(null, 'Smith', 'John');
+contact.phoneNumbers = [new ContactField('mobile', '6471234567')];
+contact.save().then(
+  () => {console.log('Contact saved!', contact)
+  this.presentAlert('Success','Contact saved!')
+},
+  (error: any) =>{console.error('Error saving contact.', error)
+  this.presentAlert('Error','Error saving contact.')
+}
+);*/
+  
+}
+   
+parseData(data){
+  this.keys=[]
+  this.values=[]
+  for (var key in data) {
+    if (data.hasOwnProperty(key)) {
+        console.log(key + " -> " + data[key]);
+        this.keys.push(key)
+        this.values.push(data[key])
+    }
+}
+}
+
+
+
   saveData(form){
     console.log(form.form.value)
     let form_data=form.form.value
@@ -206,6 +363,7 @@ export class AddDocumentPage implements OnInit {
         const headers = new HttpHeaders().set('Authorization', 'Bearer '+res)
         this.service.saveData(body,headers).subscribe(res=>{
           console.log(res)
+          this.presentToast('The Document is saved Successfully!')
            this.router.navigate(['/menu/main'])
         },err=>{
           console.log(err)
@@ -216,5 +374,14 @@ export class AddDocumentPage implements OnInit {
     
 
   }
+  async presentToast(msg) {
+    const toast = await this.toastController.create({
+      message: msg,
+      color:'dark',
+      duration: 4000
+    });
+    toast.present();
+  }
+   
 
 }

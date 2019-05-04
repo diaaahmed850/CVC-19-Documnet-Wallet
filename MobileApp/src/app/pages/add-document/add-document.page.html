@@ -14,7 +14,7 @@
       <ion-col col-4>
           <ion-button (click)="openCam()"   >Open Camera</ion-button>
       </ion-col>
-      <ion-col col-4> </ion-col>
+      <ion-col col-4></ion-col>
       <ion-col col-4>
           <ion-button (click)="openGallery()"   >open gallery</ion-button>  
       </ion-col>
@@ -50,9 +50,7 @@
                     <ion-input type='text' [value]="data['code']"></ion-input>
                   </ion-item>
         </ion-list>
-    -->
-     
-    <ion-card *ngIf="data"   >
+        <ion-card *ngIf="data"   >
         <img src="{{image}}">
         <ion-card-header>
            
@@ -134,7 +132,64 @@
                           </form>
         </ion-card-content>
       </ion-card>
+    -->
      
+    <ion-card *ngIf="show"   >
+      <img src="{{image}}">
+      <ion-card-header>
+         
+        <ion-card-title>Results</ion-card-title>
+      </ion-card-header>
     
-             
+      <ion-card-content>
+          <form #idform="ngForm" (ngSubmit)="saveData(idform)">
+              <ion-row center>  
+                  <ion-col text-center>   
+                     <ion-item>
+                      <ion-label>Title: </ion-label>
+                      <ion-input  type='text' [value]="type" name="title" required [(ngModel)]="type"></ion-input>
+                     </ion-item> 
+                    
+                  </ion-col> 
+                 </ion-row> 
+                  <ion-item *ngFor="let k of keys">
+                      <ion-label>{{k}}</ion-label>
+                      <ion-textarea rows="1" autosize type='text' [(ngModel)]="data[k]"  required name="{{k}}"></ion-textarea>
+                    </ion-item> 
+     <div *ngIf="!checkLicense()&&!checkCard()">
+        <ion-row center>  
+            <ion-col text-center>   
+              <br>  
+             <ion-button type="submit" block [disabled]="!idform.form.valid" > Save</ion-button> 
+            </ion-col> 
+           </ion-row>
+     </div>
+     <div *ngIf="checkLicense()">
+        <ion-row>
+     
+            <ion-col col-4>
+                <ion-button type="submit" block [disabled]="!idform.form.valid" > Save</ion-button>
+            </ion-col>
+            <ion-col col-4></ion-col>
+            <ion-col col-4>
+                <ion-button (click)="getFines()" >Get Fines</ion-button>  
+            </ion-col>
+          </ion-row>
+     </div>
+     <div *ngIf="checkCard()">
+        <ion-row>
+     
+            <ion-col col-4>
+                <ion-button type="submit" block [disabled]="!idform.form.valid" > Save</ion-button>
+            </ion-col>
+            <ion-col col-4></ion-col>
+            <ion-col col-4>
+                <ion-button (click)="saveContacts()" >Save Contact</ion-button>  
+            </ion-col>
+          </ion-row>
+     </div>
+                    
+                  </form>
+                </ion-card-content>
+              </ion-card>
 </ion-content>

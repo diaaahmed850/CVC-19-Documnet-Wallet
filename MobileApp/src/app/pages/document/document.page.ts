@@ -7,6 +7,7 @@ import { KeyRegistry } from '@angular/core/src/di/reflective_key';
 import { NavController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
+import { LoadingController } from '@ionic/angular';
 @Component({
   selector: 'app-document',
   templateUrl: './document.page.html',
@@ -14,12 +15,13 @@ import { AlertController } from '@ionic/angular';
 })
 export class DocumentPage implements OnInit {
    
-  constructor(private storage:Storage,private service:ScanServicesService,private router: Router,private route: ActivatedRoute,public navCtrl: NavController,public toastController: ToastController,public alertController: AlertController) { }
+  constructor(private storage:Storage,private service:ScanServicesService,private router: Router,private route: ActivatedRoute,public navCtrl: NavController,public toastController: ToastController,public alertController: AlertController,public loadingController: LoadingController) { }
 document:any;
 id:any
 keys=[]
 values=[]
 readOnly=true
+loaderToShow: any;
   ngOnInit() {
     /*this.readOnly=true
     this.keys=[]
@@ -163,6 +165,48 @@ readOnly=true
           }
         }
       ]
+    });
+
+    await alert.present();
+  }
+
+  checkLicense(){
+    if(this.document['docType']==2){
+      return true
+    }
+    else{
+      return false
+    }
+  }
+  getFines(){
+    this.showLoader()
+      this.service.getFines(this.document['data']).subscribe(res=>{
+        this.hideLoader()
+        this.presentAlert('Total Fines','Your Total Fines is : '+res['Fines'])
+      })
+  }
+  showLoader() {
+    this.loaderToShow = this.loadingController.create({
+      message: 'Please wait'
+    }).then((res) => {
+      res.present();
+ 
+      res.onDidDismiss().then((dis) => {
+        console.log('Loading dismissed!');
+      });
+    });
+    //
+  }
+ 
+  hideLoader() {
+    this.loadingController.dismiss();
+     
+  }
+  async presentAlert(header,err) {
+    const alert = await this.alertController.create({
+      header: header,
+      message: err,
+      buttons: ['OK']
     });
 
     await alert.present();

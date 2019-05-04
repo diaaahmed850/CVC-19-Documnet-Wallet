@@ -21,6 +21,6 @@ export class Autosize implements OnInit {
     let textArea = this.element.nativeElement.getElementsByTagName('textarea')[0];
     textArea.style.overflow = 'hidden';
     textArea.style.height = 'auto';
-    textArea.style.height = (textArea.scrollHeight+32) + "px";
+    textArea.style.height = (textArea.scrollHeight) + "px";
   }
 }

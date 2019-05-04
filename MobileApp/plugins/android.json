@@ -48,6 +48,12 @@
     },
     "cordova-sqlite-storage": {
       "PACKAGE_NAME": "io.ionic.starter"
+    },
+    "cordova-plugin-camera-preview": {
+      "PACKAGE_NAME": "io.ionic.starter"
+    },
+    "cordova-plugin-contacts": {
+      "PACKAGE_NAME": "io.ionic.starter"
     }
   },
   "dependent_plugins": {

@@ -1049,20 +1049,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _ionic_native_http_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic-native/http/ngx */ "./node_modules/@ionic-native/http/ngx/index.js");
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
-/* harmony import */ var _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic-native/splash-screen/ngx */ "./node_modules/@ionic-native/splash-screen/ngx/index.js");
-/* harmony import */ var _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic-native/status-bar/ngx */ "./node_modules/@ionic-native/status-bar/ngx/index.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _angular_http__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/http */ "./node_modules/@angular/http/fesm5/http.js");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
-/* harmony import */ var _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @ionic-native/camera/ngx */ "./node_modules/@ionic-native/camera/ngx/index.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic-native/splash-screen/ngx */ "./node_modules/@ionic-native/splash-screen/ngx/index.js");
+/* harmony import */ var _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic-native/status-bar/ngx */ "./node_modules/@ionic-native/status-bar/ngx/index.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _angular_http__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/http */ "./node_modules/@angular/http/fesm5/http.js");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @ionic-native/camera/ngx */ "./node_modules/@ionic-native/camera/ngx/index.js");
+/* harmony import */ var _ionic_native_camera_preview_ngx__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @ionic-native/camera-preview/ngx */ "./node_modules/@ionic-native/camera-preview/ngx/index.js");
 /* harmony import */ var _ionic_native_facebook_ngx__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @ionic-native/facebook/ngx */ "./node_modules/@ionic-native/facebook/ngx/index.js");
-/* harmony import */ var _ionic_native_base64_ngx__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @ionic-native/base64/ngx */ "./node_modules/@ionic-native/base64/ngx/index.js");
-/* harmony import */ var _directives_autosize_directive__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./directives/autosize.directive */ "./src/app/directives/autosize.directive.ts");
-/* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm5/ionic-storage.js");
-/* harmony import */ var _ionic_native_google_plus_ngx__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @ionic-native/google-plus/ngx */ "./node_modules/@ionic-native/google-plus/ngx/index.js");
+/* harmony import */ var _directives_autosize_directive__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./directives/autosize.directive */ "./src/app/directives/autosize.directive.ts");
+/* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm5/ionic-storage.js");
+/* harmony import */ var _ionic_native_google_plus_ngx__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @ionic-native/google-plus/ngx */ "./node_modules/@ionic-native/google-plus/ngx/index.js");
+/* harmony import */ var _ionic_native_contacts_ngx__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @ionic-native/contacts/ngx */ "./node_modules/@ionic-native/contacts/ngx/index.js");
 
 
 
@@ -1086,27 +1086,27 @@ var AppModule = /** @class */ (function () {
     }
     AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-            declarations: [_app_component__WEBPACK_IMPORTED_MODULE_10__["AppComponent"], _directives_autosize_directive__WEBPACK_IMPORTED_MODULE_15__["Autosize"]],
+            declarations: [_app_component__WEBPACK_IMPORTED_MODULE_9__["AppComponent"], _directives_autosize_directive__WEBPACK_IMPORTED_MODULE_14__["Autosize"]],
             entryComponents: [],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"],
-                _angular_common_http__WEBPACK_IMPORTED_MODULE_8__["HttpClientModule"],
-                _angular_http__WEBPACK_IMPORTED_MODULE_9__["HttpModule"],
-                _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicModule"].forRoot(),
-                _app_routing_module__WEBPACK_IMPORTED_MODULE_11__["AppRoutingModule"],
-                _ionic_storage__WEBPACK_IMPORTED_MODULE_16__["IonicStorageModule"].forRoot()
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_7__["HttpClientModule"],
+                _angular_http__WEBPACK_IMPORTED_MODULE_8__["HttpModule"],
+                _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"].forRoot(),
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_10__["AppRoutingModule"],
+                _ionic_storage__WEBPACK_IMPORTED_MODULE_15__["IonicStorageModule"].forRoot()
             ],
             providers: [
-                _ionic_native_google_plus_ngx__WEBPACK_IMPORTED_MODULE_17__["GooglePlus"],
-                _ionic_native_base64_ngx__WEBPACK_IMPORTED_MODULE_14__["Base64"],
-                _ionic_native_http_ngx__WEBPACK_IMPORTED_MODULE_4__["HTTP"],
-                _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_12__["Camera"],
+                _ionic_native_google_plus_ngx__WEBPACK_IMPORTED_MODULE_16__["GooglePlus"],
+                _ionic_native_camera_preview_ngx__WEBPACK_IMPORTED_MODULE_12__["CameraPreview"],
+                _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_11__["Camera"],
+                _ionic_native_contacts_ngx__WEBPACK_IMPORTED_MODULE_17__["Contacts"],
                 _ionic_native_facebook_ngx__WEBPACK_IMPORTED_MODULE_13__["Facebook"],
-                _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_7__["StatusBar"],
-                _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_6__["SplashScreen"],
-                { provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"], useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicRouteStrategy"] }
+                _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"],
+                _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"],
+                { provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"], useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicRouteStrategy"] }
             ],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_10__["AppComponent"]]
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_9__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;
@@ -1228,15 +1228,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var TOKEN_KEY = 'auth-token';
 var AuthenticationService = /** @class */ (function () {
-    function AuthenticationService(storage, plt, service, fb, googlePlus) {
+    function AuthenticationService(storage, plt, service, fb, googlePlus, alertController) {
         var _this = this;
         this.storage = storage;
         this.plt = plt;
         this.service = service;
         this.fb = fb;
         this.googlePlus = googlePlus;
+        this.alertController = alertController;
         this.authenticationState = new rxjs__WEBPACK_IMPORTED_MODULE_4__["BehaviorSubject"](false);
         this.plt.ready().then(function () {
             _this.checkToken();
@@ -1258,7 +1260,28 @@ var AuthenticationService = /** @class */ (function () {
                 _this.authenticationState.next(true);
             });
         }, function (err) {
-            console.log(err);
+            console.log(err.error.Error);
+            _this.presentAlert(err.error.Error);
+        });
+    };
+    AuthenticationService.prototype.presentAlert = function (err) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var alert;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.alertController.create({
+                            header: 'Alert',
+                            message: err,
+                            buttons: ['OK']
+                        })];
+                    case 1:
+                        alert = _a.sent();
+                        return [4 /*yield*/, alert.present()];
+                    case 2:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
         });
     };
     AuthenticationService.prototype.socialLogin = function (data) {
@@ -1269,7 +1292,8 @@ var AuthenticationService = /** @class */ (function () {
                 _this.authenticationState.next(true);
             });
         }, function (err) {
-            console.log(err);
+            console.log(err.error.Error);
+            _this.presentAlert(err.error.Error);
         });
     };
     AuthenticationService.prototype.register = function (data) {
@@ -1280,7 +1304,8 @@ var AuthenticationService = /** @class */ (function () {
                 _this.authenticationState.next(true);
             });
         }, function (err) {
-            console.log(err);
+            console.log(err.error.Error);
+            _this.presentAlert(err.error.error);
         });
     };
     AuthenticationService.prototype.logout = function () {
@@ -1334,7 +1359,7 @@ var AuthenticationService = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Injectable"])({
             providedIn: 'root'
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_storage__WEBPACK_IMPORTED_MODULE_3__["Storage"], _ionic_angular__WEBPACK_IMPORTED_MODULE_1__["Platform"], _scan_services_service__WEBPACK_IMPORTED_MODULE_7__["ScanServicesService"], _ionic_native_facebook_ngx__WEBPACK_IMPORTED_MODULE_5__["Facebook"], _ionic_native_google_plus_ngx__WEBPACK_IMPORTED_MODULE_6__["GooglePlus"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_storage__WEBPACK_IMPORTED_MODULE_3__["Storage"], _ionic_angular__WEBPACK_IMPORTED_MODULE_1__["Platform"], _scan_services_service__WEBPACK_IMPORTED_MODULE_7__["ScanServicesService"], _ionic_native_facebook_ngx__WEBPACK_IMPORTED_MODULE_5__["Facebook"], _ionic_native_google_plus_ngx__WEBPACK_IMPORTED_MODULE_6__["GooglePlus"], _ionic_angular__WEBPACK_IMPORTED_MODULE_1__["AlertController"]])
     ], AuthenticationService);
     return AuthenticationService;
 }());
@@ -1356,15 +1381,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _ionic_native_http_ngx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic-native/http/ngx */ "./node_modules/@ionic-native/http/ngx/index.js");
-
 
 
 
 var ScanServicesService = /** @class */ (function () {
-    function ScanServicesService(http, http1) {
+    function ScanServicesService(http) {
         this.http = http;
-        this.http1 = http1;
+        this.url = 'http://192.168.1.111:8000/';
     }
     ScanServicesService.prototype.scanId = function (body) {
         var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Content-Type': 'application/json',
@@ -1373,7 +1396,7 @@ var ScanServicesService = /** @class */ (function () {
             'Accept': 'application/json'
         });
         var options = { headers: headers };
-        return this.http.post('http://192.168.1.111:8000/id', body);
+        return this.http.post(this.url + 'id', body);
     };
     ScanServicesService.prototype.scanPassport = function (body) {
         var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Content-Type': 'application/json',
@@ -1382,7 +1405,16 @@ var ScanServicesService = /** @class */ (function () {
             'Accept': 'application/json'
         });
         var options = { headers: headers };
-        return this.http.post('http://192.168.1.111:8000/pass', body);
+        return this.http.post(this.url + 'pass', body);
+    };
+    ScanServicesService.prototype.scanLicence = function (body) {
+        return this.http.post(this.url + 'licence', body);
+    };
+    ScanServicesService.prototype.scanBusinessCard = function (body) {
+        return this.http.post(this.url + 'businesscard', body);
+    };
+    ScanServicesService.prototype.getFines = function (body) {
+        return this.http.post(this.url + 'fines', body);
     };
     ScanServicesService.prototype.login = function (body) {
         var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Content-Type': 'application/json',
@@ -1391,7 +1423,7 @@ var ScanServicesService = /** @class */ (function () {
             'Accept': 'application/json'
         });
         var options = { headers: headers };
-        return this.http.post('http://192.168.1.111:8000/signin', body);
+        return this.http.post(this.url + 'signin', body);
     };
     ScanServicesService.prototype.socialLogin = function (body) {
         var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Content-Type': 'application/json',
@@ -1399,7 +1431,7 @@ var ScanServicesService = /** @class */ (function () {
             'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, PUT',
             'Accept': 'application/json'
         });
-        return this.http.post('http://192.168.1.111:8000/socialLogin', body);
+        return this.http.post(this.url + 'socialLogin', body);
     };
     ScanServicesService.prototype.register = function (body) {
         var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Content-Type': 'application/json',
@@ -1408,33 +1440,33 @@ var ScanServicesService = /** @class */ (function () {
             'Accept': 'application/json'
         });
         var options = { headers: headers };
-        return this.http.post('http://192.168.1.111:8000/signup', body);
+        return this.http.post(this.url + 'signup', body);
     };
     ScanServicesService.prototype.getData = function (headers) {
         var options = { headers: headers };
-        return this.http.get('http://192.168.1.111:8000/doc', options);
+        return this.http.get(this.url + 'doc', options);
     };
     ScanServicesService.prototype.saveData = function (body, headers) {
         var options = { headers: headers };
-        return this.http.post('http://192.168.1.111:8000/doc', body, options);
+        return this.http.post(this.url + 'doc', body, options);
     };
     ScanServicesService.prototype.getDocument = function (headers, id) {
         var options = { headers: headers };
-        return this.http.get('http://192.168.1.111:8000/doc/' + id, options);
+        return this.http.get(this.url + 'doc/' + id, options);
     };
     ScanServicesService.prototype.editDocument = function (headers, body, id) {
         var options = { headers: headers };
-        return this.http.put('http://192.168.1.111:8000/doc/' + id, body, options);
+        return this.http.put(this.url + 'doc/' + id, body, options);
     };
     ScanServicesService.prototype.deleteDocument = function (headers, id) {
         var options = { headers: headers };
-        return this.http.delete('http://192.168.1.111:8000/doc/' + id, options);
+        return this.http.delete(this.url + 'doc/' + id, options);
     };
     ScanServicesService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
             providedIn: 'root'
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"], _ionic_native_http_ngx__WEBPACK_IMPORTED_MODULE_3__["HTTP"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
     ], ScanServicesService);
     return ScanServicesService;
 }());
@@ -1504,7 +1536,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/diaa/Desktop/vision19_project/vision19_App/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /home/diaa/Desktop/Vision19/MobileApp/src/main.ts */"./src/main.ts");
 
 
 /***/ })

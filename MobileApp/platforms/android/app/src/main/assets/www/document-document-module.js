@@ -97,13 +97,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
 var DocumentPage = /** @class */ (function () {
-    function DocumentPage(storage, service, router, route, navCtrl) {
+    function DocumentPage(storage, service, router, route, navCtrl, toastController, alertController) {
         this.storage = storage;
         this.service = service;
         this.router = router;
         this.route = route;
         this.navCtrl = navCtrl;
+        this.toastController = toastController;
+        this.alertController = alertController;
         this.keys = [];
         this.values = [];
         this.readOnly = true;
@@ -147,18 +151,7 @@ var DocumentPage = /** @class */ (function () {
         this.readOnly = false;
     };
     DocumentPage.prototype.delete = function () {
-        var _this = this;
-        this.storage.get('auth-token').then(function (res) {
-            if (res) {
-                var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpHeaders"]().set('Authorization', 'Bearer ' + res);
-                _this.service.deleteDocument(headers, _this.id).subscribe(function (res) {
-                    console.log(res);
-                    _this.router.navigate(['/menu/main']);
-                }, function (err) {
-                    console.log(err);
-                });
-            }
-        });
+        this.presentAlertConfirm();
     };
     DocumentPage.prototype.ionViewWillEnter = function () {
         var _this = this;
@@ -204,6 +197,7 @@ var DocumentPage = /** @class */ (function () {
                 _this.service.editDocument(headers, body, _this.id).subscribe(function (res) {
                     console.log(res);
                     _this.readOnly = true;
+                    _this.presentToast('The Document is edited Successfully!');
                     _this.router.navigate(['/menu/document/' + _this.id]);
                     //this.navCtrl.navigateRoot('/document/'+this.id)
                 }, function (err) {
@@ -212,13 +206,78 @@ var DocumentPage = /** @class */ (function () {
             }
         });
     };
+    DocumentPage.prototype.presentToast = function (msg) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var toast;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.toastController.create({
+                            message: msg,
+                            color: 'dark',
+                            duration: 4000
+                        })];
+                    case 1:
+                        toast = _a.sent();
+                        toast.present();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    DocumentPage.prototype.presentAlertConfirm = function () {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var alert;
+            var _this = this;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.alertController.create({
+                            header: 'Alert',
+                            message: '<strong>Are you sure you want to delete this Document</strong>?',
+                            buttons: [
+                                {
+                                    text: 'Cancel',
+                                    role: 'cancel',
+                                    cssClass: 'secondary',
+                                    handler: function (blah) {
+                                        console.log('Confirm Cancel: blah');
+                                    }
+                                }, {
+                                    text: 'Confirm',
+                                    handler: function () {
+                                        console.log('Confirm Okay');
+                                        _this.storage.get('auth-token').then(function (res) {
+                                            if (res) {
+                                                var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpHeaders"]().set('Authorization', 'Bearer ' + res);
+                                                _this.service.deleteDocument(headers, _this.id).subscribe(function (res) {
+                                                    console.log(res);
+                                                    _this.presentToast('The Document is deleted Successfully!');
+                                                    _this.router.navigate(['/menu/main']);
+                                                }, function (err) {
+                                                    console.log(err);
+                                                });
+                                            }
+                                        });
+                                    }
+                                }
+                            ]
+                        })];
+                    case 1:
+                        alert = _a.sent();
+                        return [4 /*yield*/, alert.present()];
+                    case 2:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
     DocumentPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-document',
             template: __webpack_require__(/*! ./document.page.html */ "./src/app/pages/document/document.page.html"),
             styles: [__webpack_require__(/*! ./document.page.scss */ "./src/app/pages/document/document.page.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_storage__WEBPACK_IMPORTED_MODULE_3__["Storage"], _services_scan_services_service__WEBPACK_IMPORTED_MODULE_2__["ScanServicesService"], _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_5__["ActivatedRoute"], _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["NavController"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_storage__WEBPACK_IMPORTED_MODULE_3__["Storage"], _services_scan_services_service__WEBPACK_IMPORTED_MODULE_2__["ScanServicesService"], _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_5__["ActivatedRoute"], _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["NavController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["ToastController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["AlertController"]])
     ], DocumentPage);
     return DocumentPage;
 }());

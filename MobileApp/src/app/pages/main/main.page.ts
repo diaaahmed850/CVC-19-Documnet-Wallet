@@ -66,12 +66,12 @@ documents:any=[]
       }, {
         text: 'Car Licence',
         handler: () => {
-          console.log('Favorite clicked');
+          this.router.navigate(['/menu/add/Licence'])
         }
       }, {
         text: 'Business Card',
         handler: () => {
-          console.log('Favorite clicked');
+          this.router.navigate(['/menu/add/Business Card'])
         }
       },{
         text: 'Cancel',
