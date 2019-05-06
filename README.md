@@ -81,7 +81,12 @@ $ cd MobileApp
 ```
 $ npm install
 ```
-- Run the application on local server
+- Navigate to directory => 'src/app/services' 
+```
+$ cd src/app/services
+```
+- Edit scan-services.service file by replacing the existing ip-address to the new one you get from running the BackEnd Server
+- Return to the Main directory => 'MobileApp', then Run the application on local server
 ```
 $ ionic serve  -c
 ```
