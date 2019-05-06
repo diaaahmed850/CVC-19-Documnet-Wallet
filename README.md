@@ -1,4 +1,4 @@
-# CVC'19 Documnet Wallet
+# CVC'19 Document Wallet
 
 ### Youtube demo for application functions and testing can be found [here](https://youtu.be/Ft0mwggR25U) 
 
