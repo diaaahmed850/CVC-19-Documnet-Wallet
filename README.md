@@ -1,5 +1,8 @@
 # CVC'19 Documnet Wallet
 
+### Youtube demo for application functions and testing can be found [here](https://youtu.be/Ft0mwggR25U) 
+
+## Intro
 Document Wallet (Ma7fazti) is a cross-platform application that allow the user to scan different types of documents/cards images, extract information from them, and keep such data on his personal account for later usage.
 
 The application is a participation in [CVC'19 competition](http://ihub.asu.edu.eg/cvc19.html) and it's totally developed by a 4th Year Computer and Systems department team, at Facuty of Engineering Ain Shams University.
@@ -13,7 +16,6 @@ The Team name isX-Team and his members are:
 The application developed using Ionic Cross-Platform framework:
 - Backend implemented using Python OpenCV library for computer vision 
 - Frontend implemented using Node and Django
-#### Youtube demo for application functions and testing can be found [here](https://youtu.be/Ft0mwggR25U) 
 
 ## Application Features
 - A smart SignUP/Login system which allow the user to Sinup/Login with his direct email address or using social login (Facebook and Google+).
