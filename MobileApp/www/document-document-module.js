@@ -58,7 +58,7 @@ var DocumentPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header *ngIf=\"document\">\n    <ion-toolbar>\n        <ion-title>{{document.title}}</ion-title>\n      <ion-buttons slot=\"start\">\n        <ion-back-button></ion-back-button>\n      </ion-buttons>\n    </ion-toolbar>\n  </ion-header>\n<ion-content padding *ngIf=\"document\">\n    <ion-list>\n        <ion-list-header>\n            <ion-label>Results</ion-label>\n          </ion-list-header>\n        </ion-list>\n          <form #dataform=\"ngForm\" (ngSubmit)=\"saveData(dataform)\" >\n          <ion-item *ngFor=\"let k of keys\">\n              <ion-label>{{k}}</ion-label>\n              <ion-input type='text' [(ngModel)]=\"document.data[k]\" [readonly]=\"readOnly\" required name=\"{{k}}\"></ion-input>\n            </ion-item>\n            <ion-grid>\n              <ion-row *ngIf=\"readOnly\">\n               \n                <ion-col col-4>\n                    <ion-button (click)=\"edit()\"  color=\"primary\" >edit</ion-button>\n                </ion-col>\n                <ion-col col-4> </ion-col>\n                <ion-col col-4>\n                    <ion-button (click)=\"delete()\" color=\"danger\"  >delete</ion-button>  \n                </ion-col>\n              </ion-row>\n              <ion-row center *ngIf=\"!readOnly\">  \n                <ion-col text-center>   \n                  <br>  \n                 <ion-button type=\"submit\" block [disabled]=\"!dataform.form.valid\" > Save</ion-button> \n                </ion-col> \n               </ion-row>\n                </ion-grid>\n          </form>\n         \n\n</ion-content>"
+module.exports = "<ion-header *ngIf=\"document\">\n    <ion-toolbar>\n        <ion-title>{{document.title}}</ion-title>\n      <ion-buttons slot=\"start\">\n        <ion-back-button></ion-back-button>\n      </ion-buttons>\n    </ion-toolbar>\n  </ion-header>\n<ion-content padding *ngIf=\"document\">\n    <ion-list>\n        <ion-list-header>\n            <ion-label>Results</ion-label>\n          </ion-list-header>\n        </ion-list>\n          <form #dataform=\"ngForm\" (ngSubmit)=\"saveData(dataform)\" >\n          <ion-item *ngFor=\"let k of keys\">\n              <ion-label>{{k}}</ion-label>\n              <ion-input type='text' [(ngModel)]=\"document.data[k]\" [readonly]=\"readOnly\" required name=\"{{k}}\"></ion-input>\n            </ion-item>\n            <ion-grid>\n              <ion-row *ngIf=\"readOnly\">\n               \n                <ion-col col-4>\n                    <ion-button (click)=\"edit()\"  color=\"primary\" >edit</ion-button>\n                </ion-col>\n                <ion-col col-4> </ion-col>\n                <ion-col col-4>\n                    <ion-button (click)=\"delete()\" color=\"danger\"  >delete</ion-button>  \n                </ion-col>\n              </ion-row>\n              <ion-row center *ngIf=\"!readOnly\">  \n                <ion-col text-center>   \n                  <br>  \n                 <ion-button type=\"submit\" block [disabled]=\"!dataform.form.valid\" > Save</ion-button> \n                </ion-col> \n               </ion-row>\n                </ion-grid>\n          </form>\n         \n\n</ion-content>\n<ion-footer *ngIf=\"checkLicense()\" >\n    <ion-toolbar position=\"bottom\">\n      <ion-button  expand=\"full\" color=\"primary\" (click)=\"getFines()\">Get Fines</ion-button>\n    </ion-toolbar>\n  </ion-footer>"
 
 /***/ }),
 
@@ -99,8 +99,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var DocumentPage = /** @class */ (function () {
-    function DocumentPage(storage, service, router, route, navCtrl, toastController, alertController) {
+    function DocumentPage(storage, service, router, route, navCtrl, toastController, alertController, loadingController) {
         this.storage = storage;
         this.service = service;
         this.router = router;
@@ -108,6 +109,7 @@ var DocumentPage = /** @class */ (function () {
         this.navCtrl = navCtrl;
         this.toastController = toastController;
         this.alertController = alertController;
+        this.loadingController = loadingController;
         this.keys = [];
         this.values = [];
         this.readOnly = true;
@@ -271,13 +273,63 @@ var DocumentPage = /** @class */ (function () {
             });
         });
     };
+    DocumentPage.prototype.checkLicense = function () {
+        if (this.document['docType'] == 2) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    };
+    DocumentPage.prototype.getFines = function () {
+        var _this = this;
+        this.showLoader();
+        this.service.getFines(this.document['data']).subscribe(function (res) {
+            _this.hideLoader();
+            _this.presentAlert('Total Fines', 'Your Total Fines is : ' + res['Fines']);
+        });
+    };
+    DocumentPage.prototype.showLoader = function () {
+        this.loaderToShow = this.loadingController.create({
+            message: 'Please wait'
+        }).then(function (res) {
+            res.present();
+            res.onDidDismiss().then(function (dis) {
+                console.log('Loading dismissed!');
+            });
+        });
+        //
+    };
+    DocumentPage.prototype.hideLoader = function () {
+        this.loadingController.dismiss();
+    };
+    DocumentPage.prototype.presentAlert = function (header, err) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var alert;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.alertController.create({
+                            header: header,
+                            message: err,
+                            buttons: ['OK']
+                        })];
+                    case 1:
+                        alert = _a.sent();
+                        return [4 /*yield*/, alert.present()];
+                    case 2:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
     DocumentPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-document',
             template: __webpack_require__(/*! ./document.page.html */ "./src/app/pages/document/document.page.html"),
             styles: [__webpack_require__(/*! ./document.page.scss */ "./src/app/pages/document/document.page.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_storage__WEBPACK_IMPORTED_MODULE_3__["Storage"], _services_scan_services_service__WEBPACK_IMPORTED_MODULE_2__["ScanServicesService"], _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_5__["ActivatedRoute"], _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["NavController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["ToastController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["AlertController"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_storage__WEBPACK_IMPORTED_MODULE_3__["Storage"], _services_scan_services_service__WEBPACK_IMPORTED_MODULE_2__["ScanServicesService"], _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_5__["ActivatedRoute"], _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["NavController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["ToastController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["AlertController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["LoadingController"]])
     ], DocumentPage);
     return DocumentPage;
 }());

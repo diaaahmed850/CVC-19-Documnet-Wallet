@@ -1145,7 +1145,7 @@ var Autosize = /** @class */ (function () {
         var textArea = this.element.nativeElement.getElementsByTagName('textarea')[0];
         textArea.style.overflow = 'hidden';
         textArea.style.height = 'auto';
-        textArea.style.height = (textArea.scrollHeight + 32) + "px";
+        textArea.style.height = (textArea.scrollHeight) + "px";
     };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["HostListener"])('input', ['$event.target']),
@@ -1405,7 +1405,7 @@ var ScanServicesService = /** @class */ (function () {
             'Accept': 'application/json'
         });
         var options = { headers: headers };
-        return this.http.post(this.url + 'pass', body);
+        return this.http.post(this.url + 'passport', body);
     };
     ScanServicesService.prototype.scanLicence = function (body) {
         return this.http.post(this.url + 'licence', body);
@@ -1536,7 +1536,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/diaa/Desktop/Vision19/MobileApp/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /home/diaa/Documents/Vision19/MobileApp/src/main.ts */"./src/main.ts");
 
 
 /***/ })

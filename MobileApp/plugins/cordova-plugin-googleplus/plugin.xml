@@ -2,7 +2,7 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
         xmlns:android="http://schemas.android.com/apk/res/android"
         id="cordova-plugin-googleplus"
-        version="7.0.1">
+        version="5.3.2">
 
   <name>Google SignIn</name>
 
@@ -19,8 +19,7 @@
   <issue>https://github.com/EddyVerbruggen/cordova-plugin-googleplus/issues</issue>
 
   <engines>
-    <engine name="cordova" version=">=7.1.0"/>
-    <engine name="cordova-android" version=">=6.3.0"/>
+    <engine name="cordova" version=">=3.5.0"/>
   </engines>
 
   <js-module src="www/GooglePlus.js" name="GooglePlus">

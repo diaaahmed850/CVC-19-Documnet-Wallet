@@ -23,7 +23,7 @@ url='http://192.168.1.111:8000/'
     'Accept':'application/json'
   });
   const options = { headers: headers };
-    return this.http.post(this.url+'pass',body)
+    return this.http.post(this.url+'passport',body)
   }
   scanLicence(body){
     return this.http.post(this.url+'licence',body)
