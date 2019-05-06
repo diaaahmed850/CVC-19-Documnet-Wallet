@@ -49,6 +49,7 @@ class IDView(APIView):
             res=IDScanner(img)
             return Response(res, status=status.HTTP_200_OK)
         except Exception as e:
+            print(e)
             return Response({"error": "Please Provide a good match national ID"}, status=status.HTTP_406_NOT_ACCEPTABLE)
 
 

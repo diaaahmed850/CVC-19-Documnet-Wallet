@@ -1,5 +1,5 @@
-from .HelperFunc import *
-from .ImportLib import *
+from ..imports_helperfunctions.ImportLib import *
+from ..imports_helperfunctions.HelperFunc import *
 
 def LicenseMatcher(InputImage):
     MIN_MATCH_COUNT = 2

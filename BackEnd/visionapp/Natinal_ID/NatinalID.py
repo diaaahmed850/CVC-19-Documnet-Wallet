@@ -1,5 +1,5 @@
-from .HelperFunc import *
-from .ImportLib import *
+from ..imports_helperfunctions.ImportLib import *
+from ..imports_helperfunctions.HelperFunc import *
 from .IDNumberParser import *
 
 def IDMatcher(InputImage):
