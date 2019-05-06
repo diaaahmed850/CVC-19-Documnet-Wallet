@@ -7,13 +7,13 @@ The application is a participation in [CVC'19 competition](http://ihub.asu.edu.e
 The Team name isX-Team and his members are:
 - [Diaa Ahmed](https://github.com/diaaahmed850)
 - [Abdallah Reda](https://github.com/AbdallahReda)
-- [Abdelrahman Mahmoud](https://github.com/AbdulrahmanMahmoud13)
 - [Abdelrahman Yassin](https://github.com/AbdelrahmanYassin)
+- [Abdelrahman Mahmoud](https://github.com/AbdulrahmanMahmoud13)
 
 The application developed using Ionic Cross-Platform framework:
 - Backend implemented using Python OpenCV library for computer vision 
 - Frontend implemented using Node and Django
-### Youtube demo for application functions and testing can be found [here](https://youtu.be/Ft0mwggR25U) 
+#### Youtube demo for application functions and testing can be found [here](https://youtu.be/Ft0mwggR25U) 
 
 ## Application Features
 - A smart SignUP/Login system which allow the user to Sinup/Login with his direct email address or using social login (Facebook and Google+).
