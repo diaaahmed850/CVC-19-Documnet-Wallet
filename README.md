@@ -43,6 +43,10 @@ The application developed using Ionic Cross-Platform framework:
 
 - Text recognition: in this step we take the detected card from the image and start to apply some enhancements to the detected document,then we cut the region of interests in the detected card that contain the the information we need to in order to recognize the text in it,then provide these ROI(region of interest) to the pytessarct to get the recognized text.
 
+## Brief description about idea and its impact.
+- Document Wallet (Ma7fazti) application is used to scan several types of governmental documents such as National ID card , Car License and Passport extracting the sensitive information from it such as ID Number , Car Number , Passport Number and the name of person related to such document ,the application also can extract some dates such as expiry date in passport and so on , the user can modify/delete any scanned document which allowing him to use such information in later use such as online booking for airplane or for manger in a company to save a database of ID numbers of his employments instead of typing all of them manually.
+- Also user can scan different types of Business Card to easily and fastly extract the Name of card owner and his Telephone/Mobile number (and email if found) allowing the user to edit the extracted data if he needed and save it as a new contact in his Smartphone Contacts  
+
 
 ## Installation
 - Supported OS : Windows10, Linux/UNIX and MacOS
