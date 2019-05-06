@@ -14,8 +14,8 @@ The Team name isX-Team and his members are:
 - [Abdelrahman Mahmoud](https://github.com/AbdulrahmanMahmoud13)
 
 The application developed using Ionic Cross-Platform framework:
-- Backend implemented using Python OpenCV library for computer vision 
-- Frontend implemented using Node and Django
+- Backend implemented using Python OpenCV library for computer vision and Django Framwork
+- Frontend implemented using Ionic Cross-Platform Framewrok
 
 ## Application Features
 - A smart SignUP/Login system which allow the user to Sinup/Login with his direct email address or using social login (Facebook and Google+).
