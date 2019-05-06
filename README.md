@@ -30,8 +30,54 @@ The scanning process consists of two main steps:
 
 
 ## Installation
-- Supported OS : Linux/UNIX and MacOS
+- Supported OS : Windows10, Linux/UNIX and MacOS
+- Required IDEs:
+    - Android Studio for SDK android building
+    - Xcode for IPA ios buidling (MacOS on Apple device is required)
 - Requreid packages and libraries found in [requirements.txt](https://github.com/diaaahmed850/Vision19/blob/master/requirements.txt) file
 ```
-pip install -r requirements.txt
+$ pip install -r requirements.txt
 ```
+
+### Development
+- Open Command/Terminal Window to get your device local address and clone the repo
+```
+$ ip addr show
+$ git clone https://github.com/diaaahmed850/Vision19
+$ cd Vision19
+```
+- Navigate to  BackEnd folder 
+```
+$ cd BackEnd
+```
+- Run manage file passing it your ip-address
+```
+$ python manage.py runserver ip-address:8000
+```
+- Open Another Terminal Vision19 folder and navigate to MobileApp folder
+```
+$ cd MobileApp
+```
+- Install node 
+```
+$ npm install
+```
+- Run the application on local server
+```
+$ ionic serve  -c
+```
+- Run on [Ionic DevApp](https://ionicframework.com/docs/appflow/devapp) easily by installing it on your smartphone and openit trying to connect to your running server by following the steps shown inside the DevApp mobile application
+
+
+#### Building for source app
+- For Android production release:
+```sh
+$ ionic cordova platform add android 
+$ ionic cordova run android
+```
+- For IOS production release:
+```sh
+$ ionic cordova platform add ios 
+$ ionic cordova run ios
+```
+- For More clear steps on building the ionic application , please visit https://ionicframework.com/docs/building/running
