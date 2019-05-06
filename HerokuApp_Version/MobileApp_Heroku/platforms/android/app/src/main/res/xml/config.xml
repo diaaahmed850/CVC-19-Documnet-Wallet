@@ -76,6 +76,9 @@
     <config-file parent="NSCameraUsageDescription" platform="ios" target="*-Info.plist">
         <string>You can take photos</string>
     </config-file>
+    <edit-config file="*-Info.plist" mode="merge" target="NSContactsUsageDescription">
+        <string>need contacts access to search friends</string>
+    </edit-config>
     <allow-intent href="market:*" />
     <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png" />
     <icon density="mdpi" src="resources/android/icon/drawable-mdpi-icon.png" />

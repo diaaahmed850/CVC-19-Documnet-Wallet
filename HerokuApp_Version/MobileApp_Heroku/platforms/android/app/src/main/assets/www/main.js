@@ -1229,10 +1229,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 var TOKEN_KEY = 'auth-token';
 var AuthenticationService = /** @class */ (function () {
-    function AuthenticationService(storage, plt, service, fb, googlePlus, alertController, loadingController) {
+    function AuthenticationService(storage, plt, service, fb, googlePlus, alertController) {
         var _this = this;
         this.storage = storage;
         this.plt = plt;
@@ -1240,7 +1239,6 @@ var AuthenticationService = /** @class */ (function () {
         this.fb = fb;
         this.googlePlus = googlePlus;
         this.alertController = alertController;
-        this.loadingController = loadingController;
         this.authenticationState = new rxjs__WEBPACK_IMPORTED_MODULE_4__["BehaviorSubject"](false);
         this.plt.ready().then(function () {
             _this.checkToken();
@@ -1256,27 +1254,14 @@ var AuthenticationService = /** @class */ (function () {
     };
     AuthenticationService.prototype.login = function (data) {
         var _this = this;
-        this.showLoader();
         this.service.login(data).subscribe(function (res) {
             console.log(res['token']);
             _this.storage.set(TOKEN_KEY, res['token']).then(function () {
-                _this.hideLoader();
                 _this.authenticationState.next(true);
             });
         }, function (err) {
-            _this.hideLoader();
             console.log(err.error.Error);
-            if (err.error.Error) {
-                _this.presentAlert(err.error.Error);
-            }
-            else if (err.error.error) {
-                _this.presentAlert(err.error.error);
-            }
-            else {
-                _this.service.restartServer().subscribe(function (res) {
-                });
-                _this.presentAlert("Please try again later");
-            }
+            _this.presentAlert(err.error.Error);
         });
     };
     AuthenticationService.prototype.presentAlert = function (err) {
@@ -1301,52 +1286,26 @@ var AuthenticationService = /** @class */ (function () {
     };
     AuthenticationService.prototype.socialLogin = function (data) {
         var _this = this;
-        this.showLoader();
         this.service.socialLogin(data).subscribe(function (res) {
             console.log(res['token']);
             _this.storage.set(TOKEN_KEY, res['token']).then(function () {
-                _this.hideLoader();
                 _this.authenticationState.next(true);
             });
         }, function (err) {
-            _this.hideLoader();
             console.log(err.error.Error);
-            if (err.error.Error) {
-                _this.presentAlert(err.error.Error);
-            }
-            else if (err.error.error) {
-                _this.presentAlert(err.error.error);
-            }
-            else {
-                _this.service.restartServer().subscribe(function (res) {
-                });
-                _this.presentAlert("Please try again later");
-            }
+            _this.presentAlert(err.error.Error);
         });
     };
     AuthenticationService.prototype.register = function (data) {
         var _this = this;
-        this.showLoader();
         this.service.register(data).subscribe(function (res) {
             console.log(res['token']);
             _this.storage.set(TOKEN_KEY, res['token']).then(function () {
-                _this.hideLoader();
                 _this.authenticationState.next(true);
             });
         }, function (err) {
-            _this.hideLoader();
             console.log(err.error.Error);
-            if (err.error.Error) {
-                _this.presentAlert(err.error.Error);
-            }
-            else if (err.error.error) {
-                _this.presentAlert(err.error.error);
-            }
-            else {
-                _this.service.restartServer().subscribe(function (res) {
-                });
-                _this.presentAlert("Please try again later");
-            }
+            _this.presentAlert(err.error.error);
         });
     };
     AuthenticationService.prototype.logout = function () {
@@ -1396,25 +1355,11 @@ var AuthenticationService = /** @class */ (function () {
             console.log(user_email);
         });
     };
-    AuthenticationService.prototype.showLoader = function () {
-        this.loaderToShow = this.loadingController.create({
-            message: 'Please wait'
-        }).then(function (res) {
-            res.present();
-            res.onDidDismiss().then(function (dis) {
-                console.log('Loading dismissed!');
-            });
-        });
-        //
-    };
-    AuthenticationService.prototype.hideLoader = function () {
-        this.loadingController.dismiss();
-    };
     AuthenticationService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Injectable"])({
             providedIn: 'root'
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_storage__WEBPACK_IMPORTED_MODULE_3__["Storage"], _ionic_angular__WEBPACK_IMPORTED_MODULE_1__["Platform"], _scan_services_service__WEBPACK_IMPORTED_MODULE_7__["ScanServicesService"], _ionic_native_facebook_ngx__WEBPACK_IMPORTED_MODULE_5__["Facebook"], _ionic_native_google_plus_ngx__WEBPACK_IMPORTED_MODULE_6__["GooglePlus"], _ionic_angular__WEBPACK_IMPORTED_MODULE_1__["AlertController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_1__["LoadingController"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_storage__WEBPACK_IMPORTED_MODULE_3__["Storage"], _ionic_angular__WEBPACK_IMPORTED_MODULE_1__["Platform"], _scan_services_service__WEBPACK_IMPORTED_MODULE_7__["ScanServicesService"], _ionic_native_facebook_ngx__WEBPACK_IMPORTED_MODULE_5__["Facebook"], _ionic_native_google_plus_ngx__WEBPACK_IMPORTED_MODULE_6__["GooglePlus"], _ionic_angular__WEBPACK_IMPORTED_MODULE_1__["AlertController"]])
     ], AuthenticationService);
     return AuthenticationService;
 }());
@@ -1442,62 +1387,8 @@ __webpack_require__.r(__webpack_exports__);
 var ScanServicesService = /** @class */ (function () {
     function ScanServicesService(http) {
         this.http = http;
-        this.url1 = 'http://192.168.1.111:8000/';
-        this.url = 'https://vision19.herokuapp.com/';
+        this.url = 'http://192.168.1.111:8000/';
     }
-    ScanServicesService.prototype.uploadImage = function (body) {
-        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, PUT',
-            'Accept': 'application/json'
-        });
-        var options = { headers: headers };
-        return this.http.post(this.url + 'file', body);
-    };
-    ScanServicesService.prototype.getId = function () {
-        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, PUT',
-            'Accept': 'application/json'
-        });
-        var options = { headers: headers };
-        return this.http.get(this.url + 'id');
-    };
-    ScanServicesService.prototype.getPassport = function () {
-        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, PUT',
-            'Accept': 'application/json'
-        });
-        var options = { headers: headers };
-        return this.http.get(this.url + 'passport');
-    };
-    ScanServicesService.prototype.getLicence = function () {
-        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, PUT',
-            'Accept': 'application/json'
-        });
-        var options = { headers: headers };
-        return this.http.get(this.url + 'licence');
-    };
-    ScanServicesService.prototype.getCard = function () {
-        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, PUT',
-            'Accept': 'application/json'
-        });
-        var options = { headers: headers };
-        return this.http.get(this.url + 'businesscard');
-    };
-    ScanServicesService.prototype.restartServer = function () {
-        var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Content-Type': 'application/json',
-            'Authorization': 'Bearer b6bb8899-8c93-4b58-8186-bde8f68cc743',
-            'Accept': 'application/vnd.heroku+json; version=3'
-        });
-        var options = { headers: headers };
-        return this.http.delete('https://api.heroku.com/apps/vision19/dynos', options);
-    };
     ScanServicesService.prototype.scanId = function (body) {
         var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({ 'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': '*',
@@ -1514,7 +1405,7 @@ var ScanServicesService = /** @class */ (function () {
             'Accept': 'application/json'
         });
         var options = { headers: headers };
-        return this.http.post(this.url + 'pass', body);
+        return this.http.post(this.url + 'passport', body);
     };
     ScanServicesService.prototype.scanLicence = function (body) {
         return this.http.post(this.url + 'licence', body);
@@ -1645,7 +1536,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/diaa/Desktop/Vision19/MobileApp/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /home/diaa/Documents/Vision19/MobileApp/src/main.ts */"./src/main.ts");
 
 
 /***/ })

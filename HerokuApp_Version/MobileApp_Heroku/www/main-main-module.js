@@ -104,16 +104,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-
 var MainPage = /** @class */ (function () {
-    function MainPage(storage, service, router, actionSheetController, loadingController, alertController) {
+    function MainPage(storage, service, router, actionSheetController) {
         this.storage = storage;
         this.service = service;
         this.router = router;
         this.actionSheetController = actionSheetController;
-        this.loadingController = loadingController;
-        this.alertController = alertController;
         this.documents = [];
     }
     MainPage.prototype.ngOnInit = function () {
@@ -135,24 +131,11 @@ var MainPage = /** @class */ (function () {
         this.storage.get('auth-token').then(function (res) {
             if (res) {
                 var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]().set('Authorization', 'Bearer ' + res);
-                _this.showLoader();
                 _this.service.getData(headers).subscribe(function (res) {
-                    _this.hideLoader();
                     console.log(res);
                     _this.documents = res;
                 }, function (err) {
                     console.log(err);
-                    _this.hideLoader();
-                    if (err.error.Error) {
-                        _this.presentAlert(err.error.Error);
-                    }
-                    else if (err.error.error) {
-                        _this.presentAlert(err.error.error);
-                    }
-                    else {
-                        _this.service.restartServer();
-                        _this.presentAlert("Please try again later");
-                    }
                 });
             }
         });
@@ -218,47 +201,13 @@ var MainPage = /** @class */ (function () {
             return false;
         }
     };
-    MainPage.prototype.showLoader = function () {
-        this.loaderToShow = this.loadingController.create({
-            message: 'Loading'
-        }).then(function (res) {
-            res.present();
-            res.onDidDismiss().then(function (dis) {
-                console.log('Loading dismissed!');
-            });
-        });
-        //
-    };
-    MainPage.prototype.hideLoader = function () {
-        this.loadingController.dismiss();
-    };
-    MainPage.prototype.presentAlert = function (err) {
-        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
-            var alert;
-            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.alertController.create({
-                            header: 'Alert',
-                            message: err,
-                            buttons: ['OK']
-                        })];
-                    case 1:
-                        alert = _a.sent();
-                        return [4 /*yield*/, alert.present()];
-                    case 2:
-                        _a.sent();
-                        return [2 /*return*/];
-                }
-            });
-        });
-    };
     MainPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-main',
             template: __webpack_require__(/*! ./main.page.html */ "./src/app/pages/main/main.page.html"),
             styles: [__webpack_require__(/*! ./main.page.scss */ "./src/app/pages/main/main.page.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_storage__WEBPACK_IMPORTED_MODULE_4__["Storage"], _services_scan_services_service__WEBPACK_IMPORTED_MODULE_2__["ScanServicesService"], _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"], _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["ActionSheetController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["LoadingController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["AlertController"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_storage__WEBPACK_IMPORTED_MODULE_4__["Storage"], _services_scan_services_service__WEBPACK_IMPORTED_MODULE_2__["ScanServicesService"], _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"], _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["ActionSheetController"]])
     ], MainPage);
     return MainPage;
 }());

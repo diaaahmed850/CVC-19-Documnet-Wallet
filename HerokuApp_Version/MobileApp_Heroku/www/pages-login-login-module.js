@@ -114,80 +114,92 @@ var LoginPage = /** @class */ (function () {
     };
     LoginPage.prototype.doFbLogin = function () {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
-            var permissions;
+            var loading, permissions;
             var _this = this;
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
-                permissions = new Array();
-                //the permissions your facebook app needs from the user
-                permissions = ["public_profile", "email"];
-                this.fb.login(permissions)
-                    .then(function (response) {
-                    var userId = response.authResponse.userID;
-                    //Getting name and gender properties
-                    _this.fb.api("/me?fields=name,email", permissions)
-                        .then(function (user) {
-                        console.log(user);
-                        user.picture = "https://graph.facebook.com/" + userId + "/picture?type=large";
-                        //now we have the users info, let's save it in the NativeStorage
-                        console.log(user.email);
-                        _this.authService.socialLogin({
-                            "provider": "facebook",
-                            "email": user.email,
-                            "socialID": userId
-                        });
-                        _this.storage.set('user', {
-                            provider: "facebook",
-                            name: user.name,
-                            email: user.email,
-                            picture: user.picture
-                        })
-                            .then(function () {
-                            //loading.dismiss();
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.loadingController.create({
+                            message: 'Please wait...'
+                        })];
+                    case 1:
+                        loading = _a.sent();
+                        this.presentLoading(loading);
+                        permissions = new Array();
+                        //the permissions your facebook app needs from the user
+                        permissions = ["public_profile", "email"];
+                        this.fb.login(permissions)
+                            .then(function (response) {
+                            var userId = response.authResponse.userID;
+                            //Getting name and gender properties
+                            _this.fb.api("/me?fields=name,email", permissions)
+                                .then(function (user) {
+                                console.log(user);
+                                user.picture = "https://graph.facebook.com/" + userId + "/picture?type=large";
+                                //now we have the users info, let's save it in the NativeStorage
+                                console.log(user.email);
+                                _this.authService.socialLogin({
+                                    "provider": "facebook",
+                                    "email": user.email,
+                                    "socialID": userId
+                                });
+                                _this.storage.set('user', {
+                                    provider: "facebook",
+                                    name: user.name,
+                                    email: user.email,
+                                    picture: user.picture
+                                })
+                                    .then(function () {
+                                    loading.dismiss();
+                                }, function (error) {
+                                    console.log(error);
+                                    loading.dismiss();
+                                });
+                            });
                         }, function (error) {
                             console.log(error);
-                            //loading.dismiss();
+                            loading.dismiss();
                         });
-                    });
-                }, function (error) {
-                    console.log(error);
-                    //loading.dismiss();
-                });
-                return [2 /*return*/];
+                        return [2 /*return*/];
+                }
             });
         });
     };
     LoginPage.prototype.doGoogleLogin = function () {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var loading;
             var _this = this;
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
-                /*const loading = await this.loadingController.create({
-                  message: 'Please wait...'
-                });*/
-                //this.presentLoading(loading);
-                this.googlePlus.login({}).then(function (user) {
-                    console.log(user);
-                    _this.authService.socialLogin({
-                        "provider": "google",
-                        "email": user.email,
-                        "socialID": user.userId
-                    });
-                    _this.storage.set('user', {
-                        provider: "google",
-                        name: user.displayName,
-                        email: user.email,
-                        picture: user.imageUrl
-                    })
-                        .then(function () {
-                        //loading.dismiss();
-                    }, function (error) {
-                        console.log(error);
-                        //loading.dismiss();
-                    });
-                }).catch(function (err) {
-                    console.log(err);
-                    //loading.dismiss();
-                });
-                return [2 /*return*/];
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.loadingController.create({
+                            message: 'Please wait...'
+                        })];
+                    case 1:
+                        loading = _a.sent();
+                        this.presentLoading(loading);
+                        this.googlePlus.login({}).then(function (user) {
+                            console.log(user);
+                            loading.dismiss();
+                            _this.authService.socialLogin({
+                                "provider": "google",
+                                "email": user.email,
+                                "socialID": user.userId
+                            });
+                            _this.storage.set('user', {
+                                provider: "google",
+                                name: user.displayName,
+                                email: user.email,
+                                picture: user.imageUrl
+                            })
+                                .then(function () {
+                            }, function (error) {
+                                console.log(error);
+                            });
+                        }).catch(function (err) {
+                            console.log(err);
+                            loading.dismiss();
+                        });
+                        return [2 /*return*/];
+                }
             });
         });
     };

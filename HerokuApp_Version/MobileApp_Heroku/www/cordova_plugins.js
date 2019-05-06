@@ -430,7 +430,7 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-contacts": "3.0.1",
     "cordova-plugin-device": "2.0.2",
     "cordova-plugin-facebook4": "4.2.1",
-    "cordova-plugin-googleplus": "7.0.1",
+    "cordova-plugin-googleplus": "5.3.2",
     "cordova-plugin-ionic-keyboard": "2.1.3",
     "cordova-plugin-ionic-webview": "3.1.2",
     "cordova-plugin-splashscreen": "5.0.2",

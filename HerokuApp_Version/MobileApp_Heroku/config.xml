@@ -85,4 +85,7 @@
     <config-file parent="NSCameraUsageDescription" platform="ios" target="*-Info.plist">
         <string>You can take photos</string>
     </config-file>
+    <edit-config file="*-Info.plist" mode="merge" target="NSContactsUsageDescription">
+        <string>need contacts access to search friends</string>
+    </edit-config>
 </widget>

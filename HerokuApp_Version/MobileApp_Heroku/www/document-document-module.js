@@ -165,10 +165,8 @@ var DocumentPage = /** @class */ (function () {
             _this.id = params['id'];
             _this.storage.get('auth-token').then(function (res) {
                 if (res) {
-                    _this.showLoader();
                     var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpHeaders"]().set('Authorization', 'Bearer ' + res);
                     _this.service.getDocument(headers, _this.id).subscribe(function (res) {
-                        _this.hideLoader();
                         console.log(res);
                         _this.document = res;
                         for (var key in _this.document.data) {
@@ -179,19 +177,7 @@ var DocumentPage = /** @class */ (function () {
                             }
                         }
                     }, function (err) {
-                        _this.hideLoader();
                         console.log(err);
-                        if (err.error.Error) {
-                            _this.presentAlert('Alert', err.error.Error);
-                        }
-                        else if (err.error.error) {
-                            _this.presentAlert('Alert', err.error.error);
-                        }
-                        else {
-                            _this.service.restartServer().subscribe(function (res) {
-                            });
-                            _this.presentAlert('Alert', "Please try again later");
-                        }
                     });
                 }
             });
@@ -218,17 +204,6 @@ var DocumentPage = /** @class */ (function () {
                     //this.navCtrl.navigateRoot('/document/'+this.id)
                 }, function (err) {
                     console.log(err);
-                    if (err.error.Error) {
-                        _this.presentAlert('Alert', err.error.Error);
-                    }
-                    else if (err.error.error) {
-                        _this.presentAlert('Alert', err.error.error);
-                    }
-                    else {
-                        _this.service.restartServer().subscribe(function (res) {
-                        });
-                        _this.presentAlert('Alert', "Please try again later");
-                    }
                 });
             }
         });
@@ -281,17 +256,6 @@ var DocumentPage = /** @class */ (function () {
                                                     _this.router.navigate(['/menu/main']);
                                                 }, function (err) {
                                                     console.log(err);
-                                                    if (err.error.Error) {
-                                                        _this.presentAlert('Alert', err.error.Error);
-                                                    }
-                                                    else if (err.error.error) {
-                                                        _this.presentAlert('Alert', err.error.error);
-                                                    }
-                                                    else {
-                                                        _this.service.restartServer().subscribe(function (res) {
-                                                        });
-                                                        _this.presentAlert('Alert', "Please try again later");
-                                                    }
                                                 });
                                             }
                                         });
@@ -323,18 +287,6 @@ var DocumentPage = /** @class */ (function () {
         this.service.getFines(this.document['data']).subscribe(function (res) {
             _this.hideLoader();
             _this.presentAlert('Total Fines', 'Your Total Fines is : ' + res['Fines']);
-        }, function (err) {
-            if (err.error.Error) {
-                _this.presentAlert('Alert', err.error.Error);
-            }
-            else if (err.error.error) {
-                _this.presentAlert('Alert', err.error.error);
-            }
-            else {
-                _this.service.restartServer().subscribe(function (res) {
-                });
-                _this.presentAlert('Alert', "Please try again later");
-            }
         });
     };
     DocumentPage.prototype.showLoader = function () {

@@ -58,7 +58,7 @@ var AddDocumentPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar color=\"primary\">\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>Adding {{type}} </ion-title>\n  </ion-toolbar>\n  <ion-button (click)=\"openCam()\"  expand=\"full\" >Open Camera</ion-button>\n  <ion-button (click)=\"openGallery()\"  expand=\"full\" >open gallery</ion-button> \n</ion-header>\n \n<ion-content padding>\n  <!--\n <ion-grid>\n    <ion-row>\n     \n      <ion-col col-4>\n          <ion-button (click)=\"openCam()\"   >Open Camera</ion-button>\n      </ion-col>\n      <ion-col col-4></ion-col>\n      <ion-col col-4>\n          <ion-button (click)=\"openGallery()\"   >open gallery</ion-button>  \n      </ion-col>\n    </ion-row>\n     \n      </ion-grid>\n  -->\n \n     \n\n  \n\n \n\n\n    <!--\n<ion-list lines=\"none\" *ngIf=\"data\">\n        <ion-list-header>\n            <ion-label>Results</ion-label>\n          </ion-list-header>\n          <ion-item>\n              <ion-label>ID</ion-label>\n              <ion-input type='text' [value]=\"data['id']\"></ion-input>\n            </ion-item>\n            <ion-item>\n                <ion-label>Name</ion-label>\n                <ion-input type='text' [value]=\"data['name']\"></ion-input>\n              </ion-item>\n              <ion-item>\n                  <ion-label>Address</ion-label>\n                  <ion-input type='text' [value]=\"data['address']\"></ion-input>\n                </ion-item>\n                <ion-item>\n                    <ion-label>code</ion-label>\n                    <ion-input type='text' [value]=\"data['code']\"></ion-input>\n                  </ion-item>\n        </ion-list>\n        <ion-card *ngIf=\"data\"   >\n        <img src=\"{{image}}\">\n        <ion-card-header>\n           \n          <ion-card-title>Results</ion-card-title>\n        </ion-card-header>\n      \n        <ion-card-content>\n            <form #idform=\"ngForm\" (ngSubmit)=\"saveData(idform)\" *ngIf=\"chechID()\">\n              <ion-row center>  \n                <ion-col text-center>   \n                   <ion-item>\n                    <ion-label>Title: </ion-label>\n                    <ion-input type='text' [value]=\"type\" name=\"title\" required [(ngModel)]=\"type\"></ion-input>\n                   </ion-item> \n                  \n                </ion-col> \n               </ion-row>\n              \n              <ion-item>\n                <ion-label>ID</ion-label>\n                <ion-input type='text' [value]=\"data['id']\" name=\"id\" required [(ngModel)]=\"data['id']\"></ion-input>\n              </ion-item>\n              <ion-item>\n                  <ion-label>Name</ion-label>\n                  <ion-textarea autosize type='text' [value]=\"data['name']\" rows=\"2\" name=\"name\" required [(ngModel)]=\"data['name']\"></ion-textarea>\n                </ion-item>\n                <ion-item>\n                    <ion-label>Address</ion-label>\n                    <ion-textarea autosize [value]=\"data['address']\" name=\"address\" required [(ngModel)]=\"data['address']\"></ion-textarea>\n                    \n                  </ion-item>\n                  <ion-item>\n                      <ion-label>code</ion-label>\n                      <ion-input type='text' [value]=\"data['code']\" name=\"code\" required [(ngModel)]=\"data['code']\"></ion-input>\n                    </ion-item>\n                    <ion-row center>  \n                        <ion-col text-center>   \n                          <br>  \n                         <ion-button type=\"submit\" block [disabled]=\"!idform.form.valid\" > Save</ion-button> \n                        </ion-col> \n                       </ion-row>\n                  </form>\n                  <form #form=\"ngForm\" (ngSubmit)=\"saveData(form)\" *ngIf=\"chechPassport()\">\n                     \n                      <ion-item>\n                        <ion-label>Nationality</ion-label>\n                        <ion-input type='text' [value]=\"data['Nationality']\"></ion-input>\n                      </ion-item>\n                      <ion-item>\n                          <ion-label>Name</ion-label>\n                          <ion-input type='text' [value]=\"data['Name']\"></ion-input>\n                        </ion-item>\n                        <ion-item>\n                            <ion-label>Passport_No</ion-label>\n                            <ion-input type='text' [value]=\"data['Passport_No']\"></ion-input>\n                          </ion-item>\n                          <ion-item>\n                              <ion-label>Country</ion-label>\n                              <ion-input type='text' [value]=\"data['Country']\"></ion-input>\n                            </ion-item>\n                            <ion-item>\n                                <ion-label>Sex</ion-label>\n                                <ion-input type='text' [value]=\"data['Sex']\"></ion-input>\n                              </ion-item>\n                              <ion-item>\n                                  <ion-label>Date_of_Birth</ion-label>\n                                  <ion-input type='text' [value]=\"data['Date_of_Birth']\"></ion-input>\n                                </ion-item>\n                                <ion-item>\n                                  <ion-label>Expiration_date</ion-label>\n                                  <ion-input type='text' [value]=\"data['Expiration_date']\"></ion-input>\n                                </ion-item>\n                            <ion-row center>  \n                                <ion-col text-center>   \n                                  <br>  \n                                 <ion-button type=\"submit\" block> Save</ion-button> \n                                </ion-col> \n                               </ion-row>\n                          </form>\n        </ion-card-content>\n      </ion-card>\n    -->\n     \n    <ion-card *ngIf=\"show\"   >\n      <img src=\"{{image}}\">\n      <ion-card-header>\n         \n        <ion-card-title>Results</ion-card-title>\n      </ion-card-header>\n    \n      <ion-card-content>\n          <form #idform=\"ngForm\" (ngSubmit)=\"saveData(idform)\">\n              <ion-row center>  \n                  <ion-col text-center>   \n                     <ion-item>\n                      <ion-label>Title: </ion-label>\n                      <ion-input  type='text' [value]=\"type\" name=\"title\" required [(ngModel)]=\"type\"></ion-input>\n                     </ion-item> \n                    \n                  </ion-col> \n                 </ion-row> \n                  <ion-item *ngFor=\"let k of keys\">\n                      <ion-label>{{k}}</ion-label>\n                      <ion-textarea rows=\"1\" autosize type='text' [(ngModel)]=\"data[k]\"  required name=\"{{k}}\"></ion-textarea>\n                    </ion-item> \n     <div *ngIf=\"!checkLicense()&&!checkCard()\">\n        <ion-row center>  \n            <ion-col text-center>   \n              <br>  \n             <ion-button type=\"submit\" block [disabled]=\"!idform.form.valid\" > Save</ion-button> \n            </ion-col> \n           </ion-row>\n     </div>\n     <div *ngIf=\"checkLicense()\">\n        <ion-row>\n     \n            <ion-col col-4>\n                <ion-button type=\"submit\" block [disabled]=\"!idform.form.valid\" > Save</ion-button>\n            </ion-col>\n            <ion-col col-4></ion-col>\n            <ion-col col-4>\n                <ion-button (click)=\"getFines()\" >Get Fines</ion-button>  \n            </ion-col>\n          </ion-row>\n     </div>\n     <div *ngIf=\"checkCard()\">\n        <ion-row>\n     \n            <ion-col col-4>\n                <ion-button type=\"submit\" block [disabled]=\"!idform.form.valid\" > Save</ion-button>\n            </ion-col>\n            <ion-col col-4></ion-col>\n            <ion-col col-4>\n                <ion-button (click)=\"saveContacts()\" >Save Contact</ion-button>  \n            </ion-col>\n          </ion-row>\n     </div>\n                    \n                  </form>\n                </ion-card-content>\n              </ion-card>\n</ion-content>\n"
+module.exports = "<ion-header>\n  <ion-toolbar color=\"primary\">\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>Adding {{type}} </ion-title>\n  </ion-toolbar>\n</ion-header>\n \n<ion-content padding>\n  <ion-grid>\n    <ion-row>\n     \n      <ion-col col-4>\n          <ion-button (click)=\"openCam()\"   >Open Camera</ion-button>\n      </ion-col>\n      <ion-col col-4></ion-col>\n      <ion-col col-4>\n          <ion-button (click)=\"openGallery()\"   >open gallery</ion-button>  \n      </ion-col>\n    </ion-row>\n     \n      </ion-grid>\n     \n\n  \n\n \n\n\n    <!--\n<ion-list lines=\"none\" *ngIf=\"data\">\n        <ion-list-header>\n            <ion-label>Results</ion-label>\n          </ion-list-header>\n          <ion-item>\n              <ion-label>ID</ion-label>\n              <ion-input type='text' [value]=\"data['id']\"></ion-input>\n            </ion-item>\n            <ion-item>\n                <ion-label>Name</ion-label>\n                <ion-input type='text' [value]=\"data['name']\"></ion-input>\n              </ion-item>\n              <ion-item>\n                  <ion-label>Address</ion-label>\n                  <ion-input type='text' [value]=\"data['address']\"></ion-input>\n                </ion-item>\n                <ion-item>\n                    <ion-label>code</ion-label>\n                    <ion-input type='text' [value]=\"data['code']\"></ion-input>\n                  </ion-item>\n        </ion-list>\n        <ion-card *ngIf=\"data\"   >\n        <img src=\"{{image}}\">\n        <ion-card-header>\n           \n          <ion-card-title>Results</ion-card-title>\n        </ion-card-header>\n      \n        <ion-card-content>\n            <form #idform=\"ngForm\" (ngSubmit)=\"saveData(idform)\" *ngIf=\"chechID()\">\n              <ion-row center>  \n                <ion-col text-center>   \n                   <ion-item>\n                    <ion-label>Title: </ion-label>\n                    <ion-input type='text' [value]=\"type\" name=\"title\" required [(ngModel)]=\"type\"></ion-input>\n                   </ion-item> \n                  \n                </ion-col> \n               </ion-row>\n              \n              <ion-item>\n                <ion-label>ID</ion-label>\n                <ion-input type='text' [value]=\"data['id']\" name=\"id\" required [(ngModel)]=\"data['id']\"></ion-input>\n              </ion-item>\n              <ion-item>\n                  <ion-label>Name</ion-label>\n                  <ion-textarea autosize type='text' [value]=\"data['name']\" rows=\"2\" name=\"name\" required [(ngModel)]=\"data['name']\"></ion-textarea>\n                </ion-item>\n                <ion-item>\n                    <ion-label>Address</ion-label>\n                    <ion-textarea autosize [value]=\"data['address']\" name=\"address\" required [(ngModel)]=\"data['address']\"></ion-textarea>\n                    \n                  </ion-item>\n                  <ion-item>\n                      <ion-label>code</ion-label>\n                      <ion-input type='text' [value]=\"data['code']\" name=\"code\" required [(ngModel)]=\"data['code']\"></ion-input>\n                    </ion-item>\n                    <ion-row center>  \n                        <ion-col text-center>   \n                          <br>  \n                         <ion-button type=\"submit\" block [disabled]=\"!idform.form.valid\" > Save</ion-button> \n                        </ion-col> \n                       </ion-row>\n                  </form>\n                  <form #form=\"ngForm\" (ngSubmit)=\"saveData(form)\" *ngIf=\"chechPassport()\">\n                     \n                      <ion-item>\n                        <ion-label>Nationality</ion-label>\n                        <ion-input type='text' [value]=\"data['Nationality']\"></ion-input>\n                      </ion-item>\n                      <ion-item>\n                          <ion-label>Name</ion-label>\n                          <ion-input type='text' [value]=\"data['Name']\"></ion-input>\n                        </ion-item>\n                        <ion-item>\n                            <ion-label>Passport_No</ion-label>\n                            <ion-input type='text' [value]=\"data['Passport_No']\"></ion-input>\n                          </ion-item>\n                          <ion-item>\n                              <ion-label>Country</ion-label>\n                              <ion-input type='text' [value]=\"data['Country']\"></ion-input>\n                            </ion-item>\n                            <ion-item>\n                                <ion-label>Sex</ion-label>\n                                <ion-input type='text' [value]=\"data['Sex']\"></ion-input>\n                              </ion-item>\n                              <ion-item>\n                                  <ion-label>Date_of_Birth</ion-label>\n                                  <ion-input type='text' [value]=\"data['Date_of_Birth']\"></ion-input>\n                                </ion-item>\n                                <ion-item>\n                                  <ion-label>Expiration_date</ion-label>\n                                  <ion-input type='text' [value]=\"data['Expiration_date']\"></ion-input>\n                                </ion-item>\n                            <ion-row center>  \n                                <ion-col text-center>   \n                                  <br>  \n                                 <ion-button type=\"submit\" block> Save</ion-button> \n                                </ion-col> \n                               </ion-row>\n                          </form>\n        </ion-card-content>\n      </ion-card>\n    -->\n     \n    <ion-card *ngIf=\"show\"   >\n      <img src=\"{{image}}\">\n      <ion-card-header>\n         \n        <ion-card-title>Results</ion-card-title>\n      </ion-card-header>\n    \n      <ion-card-content>\n          <form #idform=\"ngForm\" (ngSubmit)=\"saveData(idform)\">\n              <ion-row center>  \n                  <ion-col text-center>   \n                     <ion-item>\n                      <ion-label>Title: </ion-label>\n                      <ion-input  type='text' [value]=\"type\" name=\"title\" required [(ngModel)]=\"type\"></ion-input>\n                     </ion-item> \n                    \n                  </ion-col> \n                 </ion-row> \n                  <ion-item *ngFor=\"let k of keys\">\n                      <ion-label>{{k}}</ion-label>\n                      <ion-textarea rows=\"1\" autosize type='text' [(ngModel)]=\"data[k]\"  required name=\"{{k}}\"></ion-textarea>\n                    </ion-item> \n     <div *ngIf=\"!checkLicense()&&!checkCard()\">\n        <ion-row center>  \n            <ion-col text-center>   \n              <br>  \n             <ion-button type=\"submit\" block [disabled]=\"!idform.form.valid\" > Save</ion-button> \n            </ion-col> \n           </ion-row>\n     </div>\n     <div *ngIf=\"checkLicense()\">\n        <ion-row>\n     \n            <ion-col col-4>\n                <ion-button type=\"submit\" block [disabled]=\"!idform.form.valid\" > Save</ion-button>\n            </ion-col>\n            <ion-col col-4></ion-col>\n            <ion-col col-4>\n                <ion-button (click)=\"getFines()\" >Get Fines</ion-button>  \n            </ion-col>\n          </ion-row>\n     </div>\n     <div *ngIf=\"checkCard()\">\n        <ion-row>\n     \n            <ion-col col-4>\n                <ion-button type=\"submit\" block [disabled]=\"!idform.form.valid\" > Save</ion-button>\n            </ion-col>\n            <ion-col col-4></ion-col>\n            <ion-col col-4>\n                <ion-button (click)=\"saveContacts()\" >Save Contact</ion-button>  \n            </ion-col>\n          </ion-row>\n     </div>\n                    \n                  </form>\n                </ion-card-content>\n              </ion-card>\n</ion-content>\n"
 
 /***/ }),
 
@@ -69,7 +69,7 @@ module.exports = "<ion-header>\n  <ion-toolbar color=\"primary\">\n    <ion-butt
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "ion-card {\n  display: flex;\n  flex-direction: column;\n  width: 100% !important;\n  margin: 0 !important; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2RpYWEvRGVza3RvcC9WaXNpb24xOS9Nb2JpbGVBcHAvc3JjL2FwcC9wYWdlcy9hZGQtZG9jdW1lbnQvYWRkLWRvY3VtZW50LnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGFBQWE7RUFDYixzQkFBc0I7RUFDdEIsc0JBQXNCO0VBQ3RCLG9CQUFvQixFQUFBIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvYWRkLWRvY3VtZW50L2FkZC1kb2N1bWVudC5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpb24tY2FyZHtcbiAgICBkaXNwbGF5OiBmbGV4O1xuICAgIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gICAgd2lkdGg6IDEwMCUgIWltcG9ydGFudDtcbiAgICBtYXJnaW46IDAgIWltcG9ydGFudDtcbiAgfSJdfQ== */"
+module.exports = "ion-card {\n  display: flex;\n  flex-direction: column;\n  width: 100% !important;\n  margin: 0 !important; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2RpYWEvRG9jdW1lbnRzL1Zpc2lvbjE5L01vYmlsZUFwcC9zcmMvYXBwL3BhZ2VzL2FkZC1kb2N1bWVudC9hZGQtZG9jdW1lbnQucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksYUFBYTtFQUNiLHNCQUFzQjtFQUN0QixzQkFBc0I7RUFDdEIsb0JBQW9CLEVBQUEiLCJmaWxlIjoic3JjL2FwcC9wYWdlcy9hZGQtZG9jdW1lbnQvYWRkLWRvY3VtZW50LnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi1jYXJke1xuICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgICB3aWR0aDogMTAwJSAhaW1wb3J0YW50O1xuICAgIG1hcmdpbjogMCAhaW1wb3J0YW50O1xuICB9Il19 */"
 
 /***/ }),
 
@@ -165,8 +165,8 @@ var AddDocumentPage = /** @class */ (function () {
             encodingType: this.camera.EncodingType.JPEG,
             mediaType: this.camera.MediaType.PICTURE,
             correctOrientation: true,
-            targetWidth: 1300,
-            targetHeight: 1300,
+            targetWidth: 1500,
+            targetHeight: 1500,
             sourceType: 1
         };
         this.camera.getPicture(options).then(function (imageData) {
@@ -179,170 +179,51 @@ var AddDocumentPage = /** @class */ (function () {
             console.log("diaa");
             _this.showLoader();
             if (_this.type == "Natinal ID") {
-                /*this.service.scanId({'img':imageData}).subscribe(res=>{
-                  this.hideLoader()
-                 this.data=res
-                 this.parseData(this.data)
-                 this.show=true
-                 console.log(res)
-           
-                },err=>{
-                  this.hideLoader()
-                  this.presentAlert('Alert',err.error.error)
-                })*/
-                _this.service.uploadImage({ 'img': imageData }).subscribe(function (res) {
-                    _this.service.getId().subscribe(function (res) {
-                        _this.hideLoader();
-                        _this.data = res;
-                        _this.parseData(_this.data);
-                        _this.show = true;
-                        console.log(res);
-                        _this.service.restartServer().subscribe(function (res) {
-                        });
-                    }, function (err) {
-                        _this.hideLoader();
-                        if (err.error.Error) {
-                            _this.presentAlert('Alert', err.error.Error);
-                        }
-                        else if (err.error.error) {
-                            _this.presentAlert('Alert', err.error.error);
-                        }
-                        else {
-                            _this.service.restartServer().subscribe(function (res) {
-                            });
-                            _this.presentAlert('Alert', "Please try again later");
-                        }
-                    });
+                _this.service.scanId({ 'img': imageData }).subscribe(function (res) {
+                    _this.hideLoader();
+                    _this.data = res;
+                    _this.parseData(_this.data);
+                    _this.show = true;
+                    console.log(res);
                 }, function (err) {
                     _this.hideLoader();
-                    if (err.error.Error) {
-                        _this.presentAlert('Alert', err.error.Error);
-                    }
-                    else if (err.error.error) {
-                        _this.presentAlert('Alert', err.error.error);
-                    }
-                    else {
-                        _this.service.restartServer().subscribe(function (res) {
-                        });
-                        _this.presentAlert('Alert', "Please try again later");
-                    }
+                    _this.presentAlert('Alert', err.error.error);
                 });
             }
             else if (_this.type == "Passport") {
-                _this.service.uploadImage({ 'img': imageData }).subscribe(function (res) {
-                    _this.service.getPassport().subscribe(function (res) {
-                        _this.hideLoader();
-                        _this.data = res;
-                        _this.parseData(_this.data);
-                        _this.show = true;
-                        console.log(res);
-                        _this.service.restartServer().subscribe(function (res) {
-                        });
-                    }, function (err) {
-                        _this.hideLoader();
-                        if (err.error.Error) {
-                            _this.presentAlert('Alert', err.error.Error);
-                        }
-                        else if (err.error.error) {
-                            _this.presentAlert('Alert', err.error.error);
-                        }
-                        else {
-                            _this.service.restartServer().subscribe(function (res) {
-                            });
-                            _this.presentAlert('Alert', "Please try again later");
-                        }
-                    });
+                _this.service.scanPassport({ 'img': imageData }).subscribe(function (res) {
+                    _this.hideLoader();
+                    _this.data = res;
+                    _this.parseData(_this.data);
+                    _this.show = true;
+                    console.log(res);
                 }, function (err) {
                     _this.hideLoader();
-                    if (err.error.Error) {
-                        _this.presentAlert('Alert', err.error.Error);
-                    }
-                    else if (err.error.error) {
-                        _this.presentAlert('Alert', err.error.error);
-                    }
-                    else {
-                        _this.service.restartServer().subscribe(function (res) {
-                        });
-                        _this.presentAlert('Alert', "Please try again later");
-                    }
+                    _this.presentAlert('Alert', err.error.error);
                 });
             }
             else if (_this.type == "Licence") {
-                _this.service.uploadImage({ 'img': imageData }).subscribe(function (res) {
-                    _this.service.getLicence().subscribe(function (res) {
-                        _this.hideLoader();
-                        _this.data = res;
-                        _this.parseData(_this.data);
-                        _this.show = true;
-                        console.log(res);
-                        _this.service.restartServer().subscribe(function (res) {
-                        });
-                    }, function (err) {
-                        _this.hideLoader();
-                        if (err.error.Error) {
-                            _this.presentAlert('Alert', err.error.Error);
-                        }
-                        else if (err.error.error) {
-                            _this.presentAlert('Alert', err.error.error);
-                        }
-                        else {
-                            _this.service.restartServer().subscribe(function (res) {
-                            });
-                            _this.presentAlert('Alert', "Please try again later");
-                        }
-                    });
+                _this.service.scanLicence({ 'img': imageData }).subscribe(function (res) {
+                    _this.hideLoader();
+                    _this.data = res;
+                    _this.parseData(_this.data);
+                    _this.show = true;
+                    console.log(res);
                 }, function (err) {
                     _this.hideLoader();
-                    if (err.error.Error) {
-                        _this.presentAlert('Alert', err.error.Error);
-                    }
-                    else if (err.error.error) {
-                        _this.presentAlert('Alert', err.error.error);
-                    }
-                    else {
-                        _this.service.restartServer().subscribe(function (res) {
-                        });
-                        _this.presentAlert('Alert', "Please try again later");
-                    }
+                    _this.presentAlert('Alert', err.error.error);
                 });
             }
             else if (_this.type == "Business Card") {
-                _this.service.uploadImage({ 'img': imageData }).subscribe(function (res) {
-                    _this.service.getCard().subscribe(function (res) {
-                        _this.hideLoader();
-                        _this.data = res;
-                        _this.parseData(_this.data);
-                        _this.show = true;
-                        console.log(res);
-                        _this.service.restartServer().subscribe(function (res) {
-                        });
-                    }, function (err) {
-                        _this.hideLoader();
-                        if (err.error.Error) {
-                            _this.presentAlert('Alert', err.error.Error);
-                        }
-                        else if (err.error.error) {
-                            _this.presentAlert('Alert', err.error.error);
-                        }
-                        else {
-                            _this.service.restartServer().subscribe(function (res) {
-                            });
-                            _this.presentAlert('Alert', "Please try again later");
-                        }
-                    });
+                _this.service.scanBusinessCard({ 'img': imageData }).subscribe(function (res) {
+                    _this.hideLoader();
+                    _this.data = res;
+                    _this.parseData(_this.data);
+                    _this.show = true;
+                    console.log(res);
                 }, function (err) {
                     _this.hideLoader();
-                    if (err.error.Error) {
-                        _this.presentAlert('Alert', err.error.Error);
-                    }
-                    else if (err.error.error) {
-                        _this.presentAlert('Alert', err.error.error);
-                    }
-                    else {
-                        _this.service.restartServer().subscribe(function (res) {
-                        });
-                        _this.presentAlert('Alert', "Please try again later");
-                    }
+                    _this.presentAlert('Alert', err.error.error);
                 });
             }
         }, function (err) {
@@ -375,170 +256,51 @@ var AddDocumentPage = /** @class */ (function () {
             console.log("diaa");
             _this.showLoader();
             if (_this.type == "Natinal ID") {
-                /*this.service.scanId({'img':imageData}).subscribe(res=>{
-                  this.hideLoader()
-                 this.data=res
-                 this.parseData(this.data)
-                 this.show=true
-                 console.log(res)
-           
-                },err=>{
-                  this.hideLoader()
-                  this.presentAlert('Alert',err.error.error)
-                })*/
-                _this.service.uploadImage({ 'img': imageData }).subscribe(function (res) {
-                    _this.service.getId().subscribe(function (res) {
-                        _this.hideLoader();
-                        _this.data = res;
-                        _this.parseData(_this.data);
-                        _this.show = true;
-                        console.log(res);
-                        _this.service.restartServer().subscribe(function (res) {
-                        });
-                    }, function (err) {
-                        _this.hideLoader();
-                        if (err.error.Error) {
-                            _this.presentAlert('Alert', err.error.Error);
-                        }
-                        else if (err.error.error) {
-                            _this.presentAlert('Alert', err.error.error);
-                        }
-                        else {
-                            _this.service.restartServer().subscribe(function (res) {
-                            });
-                            _this.presentAlert('Alert', "Please try again later");
-                        }
-                    });
+                _this.service.scanId({ 'img': imageData }).subscribe(function (res) {
+                    _this.hideLoader();
+                    _this.data = res;
+                    _this.parseData(_this.data);
+                    _this.show = true;
+                    console.log(res);
                 }, function (err) {
                     _this.hideLoader();
-                    if (err.error.Error) {
-                        _this.presentAlert('Alert', err.error.Error);
-                    }
-                    else if (err.error.error) {
-                        _this.presentAlert('Alert', err.error.error);
-                    }
-                    else {
-                        _this.service.restartServer().subscribe(function (res) {
-                        });
-                        _this.presentAlert('Alert', "Please try again later");
-                    }
+                    _this.presentAlert('Alert', err.error.error);
                 });
             }
             else if (_this.type == "Passport") {
-                _this.service.uploadImage({ 'img': imageData }).subscribe(function (res) {
-                    _this.service.getPassport().subscribe(function (res) {
-                        _this.hideLoader();
-                        _this.data = res;
-                        _this.parseData(_this.data);
-                        _this.show = true;
-                        console.log(res);
-                        _this.service.restartServer().subscribe(function (res) {
-                        });
-                    }, function (err) {
-                        _this.hideLoader();
-                        if (err.error.Error) {
-                            _this.presentAlert('Alert', err.error.Error);
-                        }
-                        else if (err.error.error) {
-                            _this.presentAlert('Alert', err.error.error);
-                        }
-                        else {
-                            _this.service.restartServer().subscribe(function (res) {
-                            });
-                            _this.presentAlert('Alert', "Please try again later");
-                        }
-                    });
+                _this.service.scanPassport({ 'img': imageData }).subscribe(function (res) {
+                    _this.hideLoader();
+                    _this.data = res;
+                    _this.parseData(_this.data);
+                    _this.show = true;
+                    console.log(res);
                 }, function (err) {
                     _this.hideLoader();
-                    if (err.error.Error) {
-                        _this.presentAlert('Alert', err.error.Error);
-                    }
-                    else if (err.error.error) {
-                        _this.presentAlert('Alert', err.error.error);
-                    }
-                    else {
-                        _this.service.restartServer().subscribe(function (res) {
-                        });
-                        _this.presentAlert('Alert', "Please try again later");
-                    }
+                    _this.presentAlert('Alert', err.error.error);
                 });
             }
             else if (_this.type == "Licence") {
-                _this.service.uploadImage({ 'img': imageData }).subscribe(function (res) {
-                    _this.service.getLicence().subscribe(function (res) {
-                        _this.hideLoader();
-                        _this.data = res;
-                        _this.parseData(_this.data);
-                        _this.show = true;
-                        console.log(res);
-                        _this.service.restartServer().subscribe(function (res) {
-                        });
-                    }, function (err) {
-                        _this.hideLoader();
-                        if (err.error.Error) {
-                            _this.presentAlert('Alert', err.error.Error);
-                        }
-                        else if (err.error.error) {
-                            _this.presentAlert('Alert', err.error.error);
-                        }
-                        else {
-                            _this.service.restartServer().subscribe(function (res) {
-                            });
-                            _this.presentAlert('Alert', "Please try again later");
-                        }
-                    });
+                _this.service.scanLicence({ 'img': imageData }).subscribe(function (res) {
+                    _this.hideLoader();
+                    _this.data = res;
+                    _this.parseData(_this.data);
+                    _this.show = true;
+                    console.log(res);
                 }, function (err) {
                     _this.hideLoader();
-                    if (err.error.Error) {
-                        _this.presentAlert('Alert', err.error.Error);
-                    }
-                    else if (err.error.error) {
-                        _this.presentAlert('Alert', err.error.error);
-                    }
-                    else {
-                        _this.service.restartServer().subscribe(function (res) {
-                        });
-                        _this.presentAlert('Alert', "Please try again later");
-                    }
+                    _this.presentAlert('Alert', err.error.error);
                 });
             }
             else if (_this.type == "Business Card") {
-                _this.service.uploadImage({ 'img': imageData }).subscribe(function (res) {
-                    _this.service.getCard().subscribe(function (res) {
-                        _this.hideLoader();
-                        _this.data = res;
-                        _this.parseData(_this.data);
-                        _this.show = true;
-                        console.log(res);
-                        _this.service.restartServer().subscribe(function (res) {
-                        });
-                    }, function (err) {
-                        _this.hideLoader();
-                        if (err.error.Error) {
-                            _this.presentAlert('Alert', err.error.Error);
-                        }
-                        else if (err.error.error) {
-                            _this.presentAlert('Alert', err.error.error);
-                        }
-                        else {
-                            _this.service.restartServer().subscribe(function (res) {
-                            });
-                            _this.presentAlert('Alert', "Please try again later");
-                        }
-                    });
+                _this.service.scanBusinessCard({ 'img': imageData }).subscribe(function (res) {
+                    _this.hideLoader();
+                    _this.data = res;
+                    _this.parseData(_this.data);
+                    _this.show = true;
+                    console.log(res);
                 }, function (err) {
                     _this.hideLoader();
-                    if (err.error.Error) {
-                        _this.presentAlert('Alert', err.error.Error);
-                    }
-                    else if (err.error.error) {
-                        _this.presentAlert('Alert', err.error.error);
-                    }
-                    else {
-                        _this.service.restartServer().subscribe(function (res) {
-                        });
-                        _this.presentAlert('Alert', "Please try again later");
-                    }
+                    _this.presentAlert('Alert', err.error.error);
                 });
             }
         }, function (err) {
@@ -671,27 +433,13 @@ var AddDocumentPage = /** @class */ (function () {
         console.log(body);
         this.storage.get('auth-token').then(function (res) {
             if (res) {
-                _this.showLoader();
                 var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_7__["HttpHeaders"]().set('Authorization', 'Bearer ' + res);
                 _this.service.saveData(body, headers).subscribe(function (res) {
                     console.log(res);
-                    _this.hideLoader();
                     _this.presentToast('The Document is saved Successfully!');
                     _this.router.navigate(['/menu/main']);
                 }, function (err) {
-                    _this.hideLoader();
                     console.log(err);
-                    if (err.error.Error) {
-                        _this.presentAlert('Alert', err.error.Error);
-                    }
-                    else if (err.error.error) {
-                        _this.presentAlert('Alert', err.error.error);
-                    }
-                    else {
-                        _this.service.restartServer().subscribe(function (res) {
-                        });
-                        _this.presentAlert('Alert', "Please try again later");
-                    }
                 });
             }
         });

@@ -102,16 +102,6 @@
       "APP_NAME": "vision19"
     }
   },
-  "cordova-plugin-googleplus": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-plugin-googleplus"
-    },
-    "is_top_level": true,
-    "variables": {
-      "REVERSED_CLIENT_ID": "com.googleusercontent.apps.458028829270-smbdqvbccda25mvub718bad88grlfcs8"
-    }
-  },
   "cordova-plugin-camera-preview": {
     "source": {
       "type": "registry",
@@ -127,5 +117,15 @@
     },
     "is_top_level": true,
     "variables": {}
+  },
+  "cordova-plugin-googleplus": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-googleplus@5.3.2"
+    },
+    "is_top_level": true,
+    "variables": {
+      "REVERSED_CLIENT_ID": "com.googleusercontent.apps.458028829270-smbdqvbccda25mvub718bad88grlfcs8"
+    }
   }
 }
