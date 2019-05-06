@@ -1,0 +1,93 @@
+{
+  "_args": [
+    [
+      "cordova-plugin-googleplus",
+      "/home/diaa/Desktop/vision19_project/vision19_App"
+    ]
+  ],
+  "_from": "cordova-plugin-googleplus@latest",
+  "_hasShrinkwrap": false,
+  "_id": "cordova-plugin-googleplus@7.0.1",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/cordova-plugin-googleplus",
+  "_nodeVersion": "10.13.0",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/cordova-plugin-googleplus_7.0.1_1553695788910_0.818438450040861"
+  },
+  "_npmUser": {
+    "email": "eddyverbruggen@gmail.com",
+    "name": "eddyverbruggen"
+  },
+  "_npmVersion": "6.7.0",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "cordova-plugin-googleplus",
+    "raw": "cordova-plugin-googleplus",
+    "rawSpec": "",
+    "scope": null,
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-googleplus/-/cordova-plugin-googleplus-7.0.1.tgz",
+  "_shasum": "8ec447e94d6f3d235c8b3542244bb7eadd523096",
+  "_shrinkwrap": null,
+  "_spec": "cordova-plugin-googleplus",
+  "_where": "/home/diaa/Desktop/vision19_project/vision19_App",
+  "cordova_name": "Google SignIn",
+  "dependencies": {},
+  "description": "Use your Google account to authenticate with the app.",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "fileCount": 31,
+    "integrity": "sha512-sinuUzfOEcyN93ahe3Z7v+d5z8h7yiF3Q6H3fdqNPbdvelfrVyPBZpryLpl82cwQDbr6vmY93FPd8SIdNNEY+Q==",
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJcm4QuCRA9TVsSAnZWagAAv/QP/3oqABmJ4AHQBRQw39kB\nkeDfRfVtvSFrLpyT579AGZPAy1+PU8q0gl6086uOgAtSu99qHPdiUWGPp55r\nbpFqLE0MEuD0XcYSmglkByik4LAugI2ZX6AEBCCbkMTZh99luvSWifWVSVCk\n69sz2fcMjt0n4LlFvTwZJ5CoM0MO2PnbbLH5GIGaXEYc7O5XiJbPI9oQXRjz\nrdHyQmjFK5GlEo8iwqpXEuwmgziMokxTp1jO6eAu88k16YVN7tSd9qw3j0k5\nPZYKG5vlijRN/nW4s26Zs9xS1PraMrKuyVpMD2mqeKA8eQA+4EABma6gOApL\nXm7/MQUOi7KGX5T3dvKYki932JcPOtI4HWIpi4Ki7VQr1VRZot2AOyPMDTsw\neJZwrZ+JhsOPpuKp8ikHcglDmLC0UXcJZfCFb1us2UqBGfpZlN8RXAUXU2Px\nU1KP9wklBmjpbC6FkkNcUHJIhWY+YS9Vy3xIBJtSCxZw3QIIgI2J0ySm/knz\nwNJAdmlg9EmMntL0sEV2p2x422yvB5JK+T8lABcmwENFEON54x139H3fl6YV\nIIZP8BYWT8OJ373GTsa+BbM9jkR40qTDUvrnpxWvEMhH78UEG8toU4iB2JOF\ncOBs/taWrm6ovoqhFpEwpYs/CXIZYzOb4yoILkTz1AOaDqNbWsLnLcnikznc\nuj8M\r\n=gsa2\r\n-----END PGP SIGNATURE-----\r\n",
+    "shasum": "8ec447e94d6f3d235c8b3542244bb7eadd523096",
+    "tarball": "https://registry.npmjs.org/cordova-plugin-googleplus/-/cordova-plugin-googleplus-7.0.1.tgz",
+    "unpackedSize": 13822059
+  },
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.5.0"
+    }
+  ],
+  "gitHead": "c18ee047eb2295d77f631e9b1046e6ac84a94c67",
+  "issue": "https://github.com/EddyVerbruggen/cordova-plugin-googleplus/issues",
+  "keywords": [
+    "Authentication",
+    "Google",
+    "Google Login",
+    "Google Plus",
+    "Google Sign In",
+    "Google SignIn",
+    "GoogleSignIn",
+    "Identity",
+    "Login",
+    "OAuth",
+    "cordova-android",
+    "cordova-ios",
+    "ecosystem:cordova"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    {
+      "name": "eddyverbruggen",
+      "email": "eddyverbruggen@gmail.com"
+    }
+  ],
+  "name": "cordova-plugin-googleplus",
+  "optionalDependencies": {},
+  "platforms": [
+    "android",
+    "ios"
+  ],
+  "readme": "ERROR: No README data found!",
+  "repo": "https://github.com/EddyVerbruggen/cordova-plugin-googleplus.git",
+  "version": "7.0.1"
+}

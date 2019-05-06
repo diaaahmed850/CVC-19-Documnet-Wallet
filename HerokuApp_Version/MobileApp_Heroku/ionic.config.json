@@ -1,0 +1,8 @@
+{
+  "name": "vision19_App",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular",
+  "id": "b9152efd"
+}

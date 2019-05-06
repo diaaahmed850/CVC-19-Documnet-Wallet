@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Home</ion-title>
+  </ion-toolbar>
+</ion-header>
+ 
+<ion-content padding>
+  <div *ngIf="checkData()" text-center>
+<h2>
+  No Documents Available
+</h2>
+  </div>
+    <div *ngFor="let d of documents">
+    <ion-card (click)="selectDocument(d.id)">
+        <ion-card-header>
+           
+          <ion-card-title>{{d.title}}</ion-card-title>
+        </ion-card-header>
+      
+        <ion-card-content>
+          <div *ngIf="d.docType==0">{{d.data.ID}}</div>
+          <div *ngIf="d.docType==1">{{d.data.PassportNumber}}</div>
+          <div *ngIf="d.docType==2">{{d.data.Numbers}} {{d.data.Letters}}</div>
+          <div *ngIf="d.docType==3">{{d.data.Name}}</div>
+        </ion-card-content>
+      </ion-card>
+      </div>
+      
+</ion-content>
+
+<ion-footer >
+    <ion-toolbar position="bottom">
+      <ion-button  expand="full" color="primary" (click)="showSheet()">Add Document</ion-button>
+    </ion-toolbar>
+  </ion-footer>
