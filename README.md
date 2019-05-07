@@ -18,8 +18,8 @@ The application developed using Ionic Cross-Platform framework:
 - Frontend implemented using Ionic Cross-Platform Framewrok
 
 This Github Repo consists of many folders:
-- BackEnd            => Contain the Backend Code integrated with apporipate APIs 
-- HerokuApp_Version  => Contain the SDK Android version of the real app that can be directly built and run on ANDROID Device , you can read more about it inside the folder's ReadME file
+- BackEnd&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;> Contain the Backend Code integrated with apporipate APIs 
+- HerokuApp_Version > Contain the SDK Android version of the real app that can be directly built and run on ANDROID Device , you can read more about it inside the folder's ReadME file
 - MobileApp          => Contain the frontend code that responsible for running the application on DevApp localhost
 - Prototyping        => Contain jupyter notebooks that responsible for computer vision part of project , you can test each scanning feature and see it's codes 
 ## Application Features
