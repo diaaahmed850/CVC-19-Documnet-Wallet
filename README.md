@@ -17,6 +17,11 @@ The application developed using Ionic Cross-Platform framework:
 - Backend implemented using Python OpenCV library for computer vision and Django Framwork
 - Frontend implemented using Ionic Cross-Platform Framewrok
 
+This Github Repo consists of many folders:
+- BackEnd            => Contain the Backend Code integrated with apporipate APIs 
+- HerokuApp_Version  => Contain the SDK Android version of the real app that can be directly built and run on ANDROID Device , you can read more about it inside the folder's ReadME file
+- MobileApp          => Contain the frontend code that responsible for running the application on DevApp localhost
+- Prototyping        => Contain jupyter notebooks that responsible for computer vision part of project , you can test each scanning feature and see it's codes 
 ## Application Features
 - A smart SignUP/Login system which allow the user to Sinup/Login with his direct email address or using social login (Facebook and Google+).
 
