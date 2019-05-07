@@ -3,11 +3,11 @@
 ### Youtube demo for application functions and testing can be found [here](https://youtu.be/Ft0mwggR25U) 
 
 ## Intro
-Document Wallet (Ma7fazti) is a cross-platform application that allow the user to scan different types of documents/cards images, extract information from them, and keep such data on his personal account for later usage.
+**Document Wallet** (**Ma7fazti**) is a cross-platform application that allow the user to scan different types of documents/cards images, extract information from them, and keep such data on his personal account for later usage.
 
 The application is a participation in [CVC'19 competition](http://ihub.asu.edu.eg/cvc19.html) and it's totally developed by a 4th Year Computer and Systems department team, at Facuty of Engineering Ain Shams University.
 
-The Team name isX-Team and his members are:
+The Team name is **X-Team** and his members are:
 - [Diaa Ahmed](https://github.com/diaaahmed850)
 - [Abdallah Reda](https://github.com/AbdallahReda)
 - [Abdelrahman Yassin](https://github.com/AbdelrahmanYassin)
@@ -18,10 +18,10 @@ The application developed using Ionic Cross-Platform framework:
 - Frontend implemented using Ionic Cross-Platform Framewrok
 
 This Github Repo consists of many folders:
-- BackEnd&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;> Contain the Backend Code integrated with apporipate APIs 
-- HerokuApp_Version&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;> Contain the SDK Android version of the real app that can be directly built and run on ANDROID Device , you can read more about it inside the folder's ReadME file
-- MobileApp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;> Contain the frontend code that responsible for running the application on DevApp localhost
-- Prototyping&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;> Contain jupyter notebooks that responsible for computer vision part of project , you can test each scanning feature and see it's codes.
+- **BackEnd**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;> Contain the Backend Code integrated with apporipate APIs 
+- **HerokuApp_Version**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;> Contain the SDK Android version of the real app that can be directly built and run on ANDROID Device , you can read more about it inside the folder's ReadME file
+- **MobileApp**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;> Contain the frontend code that responsible for running the application on DevApp localhost
+- **Prototyping**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;> Contain jupyter notebooks that responsible for computer vision part of project , you can test each scanning feature and see it's codes.
 
 ## Application Features
 - A smart SignUP/Login system which allow the user to Sinup/Login with his direct email address or using social login (Facebook and Google+).
