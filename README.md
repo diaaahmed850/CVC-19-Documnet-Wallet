@@ -19,7 +19,7 @@ The application developed using Ionic Cross-Platform framework:
 
 This Github Repo consists of many folders:
 - BackEnd&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;> Contain the Backend Code integrated with apporipate APIs 
-- HerokuApp_Version&nbsp;&nbsp;> Contain the SDK Android version of the real app that can be directly built and run on ANDROID Device , you can read more about it inside the folder's ReadME file
+- HerokuApp_Version&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;> Contain the SDK Android version of the real app that can be directly built and run on ANDROID Device , you can read more about it inside the folder's ReadME file
 - MobileApp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;> Contain the frontend code that responsible for running the application on DevApp localhost
 - Prototyping&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;> Contain jupyter notebooks that responsible for computer vision part of project , you can test each scanning feature and see it's codes.
 
